@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kaleidoscope</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Serif:wght@700;800&display=swap&subset=vietnamese"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="assets/icons/icon.png" sizes="any" />
+    <link rel="shortcut icon" href="assets/icons/icon.png" />
+    <!-- KaTeX for Math rendering (inline LaTeX support) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <!-- Prism.js for syntax highlighting in code blocks -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-tomorrow.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#/" aria-label="Kaleidoscope Home">
+          <img class="brand-logo" src="assets/icons/icon.png" alt="Kaleidoscope logo" />
+          <span>Kaleidoscope</span>
+        </a>
+        <nav class="site-nav" aria-label="Dieu huong chinh">
+          <a href="#/" data-route="/">Home</a>
+          <a href="#/blog" data-route="/blog">Blog</a>
+          <a href="#/contact" data-route="/contact">Contact</a>
+        </nav>
+      </header>
+
+      <main id="app" class="view" tabindex="-1"></main>
+    </div>
+
+    <template id="home-template">
+      <section class="home-grid reveal">
+        <div class="home-copy">
+          <p class="eyebrow">runeeyes</p>
+          <h1>Kaleidoscope</h1>
+          <p>
+            Tên thật là Lê Anh Tiến, một thanh niên hội tụ đủ gần như là tất cả những gì tồi tệ nhất có thể có của một người trong ngành IT: nghèo, hơi đụt, cận nhưng không trĩ. Tôi mê game và thích chia sẻ những kiến thức lập trình cho người mới. Have fun!
+          </p>
+          <div class="home-actions">
+            <a class="button primary" href="#/blog">Đọc Blog</a>
+            <a class="button secondary" href="#/contact">Liên hệ</a>
+          </div>
+        </div>
+        <aside class="feature-panel" aria-label="Tom tat Kaleidoscope">
+          <div class="prism-lines" aria-hidden="true">
+            <span class="eyebrow">Mejiro Bright</span><span class="eyebrow">Buena Vista</span><span class="eyebrow">Forever Young</span><span class="eyebrow">Almond Eye</span>
+          </div>
+          <p class="panel-kicker">Kaleidoscope</p>
+          <h2>Thế giới đầy sắc màu </h2>
+          <p>Lạc quan là những gì tôi có, dù sao thì, một nụ cười bằng mười thang thuốc bổ mà. Tò mò về những cái tên bên trên? À đó là những chú ngựa mà tôi thích.</p>
+        </aside>
+      </section>
+    </template>
+
+    <template id="blog-template">
+      <section class="blog-layout reveal">
+        <div class="blog-index">
+          <div class="section-heading">
+            <p class="eyebrow">Archive</p>
+            <h1>Blog</h1>
+            <p>Những bài viết của tôi.</p>
+          </div>
+          <div id="post-list" class="post-list" aria-label="Danh sach bai viet"></div>
+        </div>
+        <article id="post-reader" class="post-reader" aria-live="polite"></article>
+        <aside id="post-toc" class="post-toc" aria-label="Muc luc bai viet"></aside>
+      </section>
+    </template>
+
+    <template id="contact-template">
+      <section class="contact-layout reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Contact</p>
+          <h1>Gửi một ghi chú ngắn.</h1>
+          <p>Đây là một chút bí mật của chúng ta, nhé?</p>
+          <div class="social-links" aria-label="Mạng xã hội">
+            <a class="button secondary social-link" href="https://github.com/runeeyes584" target="_blank" rel="noreferrer noopener">GitHub</a>
+            <a class="button secondary social-link" href="https://www.facebook.com/HCruneeyes" target="_blank" rel="noreferrer noopener">Facebook</a>
+            <a class="button secondary social-link" href="https://www.instagram.com/hcruneeyes/" target="_blank" rel="noreferrer noopener">Instagram</a>
+          </div>
+        </div>
+        <form class="contact-form" action="#" method="post">
+          <label>
+            <span>Tên</span>
+            <input name="name" type="text" autocomplete="name" placeholder="Nguyễn Minh Anh" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input name="email" type="email" autocomplete="email" placeholder="minhanh@example.com" required />
+          </label>
+          <label>
+            <span>Chủ đề</span>
+            <select name="topic" required>
+              <option value="">Chọn một chủ đề</option>
+              <option>Trao đổi bài viết</option>
+              <option>Góp ý giao diện</option>
+              <option>Hợp tác nội dung</option>
+            </select>
+          </label>
+          <label class="full">
+            <span>Nội dung</span>
+            <textarea name="message" rows="5" placeholder="Viết ngắn gọn điều bạn muốn trao đổi..." required></textarea>
+          </label>
+          <button class="button primary" type="submit">Gửi ghi chú</button>
+        </form>
+      </section>
+    </template>
+
+    <script defer src="script.js"></script>
+  </body>
+</html>

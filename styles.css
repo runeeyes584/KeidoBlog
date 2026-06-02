@@ -1,0 +1,783 @@
+:root {
+  --canvas: #f7f6f3;
+  --surface: #ffffff;
+  --ink: #171717;
+  --muted: #787774;
+  --line: #eaeaea;
+  --green: #edf3ec;
+  --green-ink: #346538;
+  --blue: #e1f3fe;
+  --blue-ink: #1f6c9f;
+  --yellow: #fbf3db;
+  --yellow-ink: #956400;
+  --red: #fdebec;
+  --red-ink: #9f2f2d;
+  --serif: "Noto Serif", "Iowan Old Style", Georgia, serif;
+  --sans: "Noto Sans", "SF Pro Display", "Geist Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Geist Mono", "SF Mono", Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("https://picsum.photos/seed/kaleidoscope-paper/1600/1000") center / cover;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+code {
+  border-radius: 4px;
+  background: var(--yellow);
+  color: var(--yellow-ink);
+  font-family: var(--mono);
+  font-size: 0.9em;
+  padding: 0.1rem 0.35rem;
+}
+
+.page-shell {
+  width: min(1280px, calc(100vw - 32px));
+  min-height: 100svh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 18px;
+  padding: 18px 0;
+}
+
+.site-header {
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+  padding: 0 12px 0 16px;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.brand,
+.site-nav {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  gap: 10px;
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.brand-logo {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.site-nav {
+  gap: 4px;
+}
+
+.site-nav a {
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  padding: 10px 12px;
+}
+
+.site-nav a.active,
+.site-nav a:hover {
+  background: #f1f0ed;
+  color: var(--ink);
+}
+
+.view {
+  min-height: 0;
+  outline: none;
+}
+
+.home-grid,
+.blog-layout,
+.contact-layout {
+  /* Keep one-screen layout: make main content area fill viewport minus header/gaps.
+     This restores the single-screen feel while inner panels remain independently scrollable. */
+  height: calc(100svh - 112px);
+  min-height: 560px;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.92fr);
+  gap: 18px;
+}
+
+.home-copy,
+.feature-panel,
+.blog-index,
+.post-reader,
+.post-toc,
+.contact-layout {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.home-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+  padding: clamp(32px, 5vw, 72px);
+}
+
+.eyebrow,
+.panel-kicker,
+.post-meta,
+.post-card .tag,
+.post-date {
+  color: var(--green-ink);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 760px;
+  font-family: var(--serif);
+  font-size: clamp(2.55rem, 6vw, 5.8rem);
+  letter-spacing: 0;
+  line-height: 0.96;
+  margin-bottom: 22px;
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
+.home-copy h1 {
+  max-width: 100%;
+  font-size: clamp(3.25rem, 5.5vw, 5.35rem);
+  line-height: 0.9;
+  overflow-wrap: normal;
+}
+
+.home-copy p:not(.eyebrow),
+.section-heading p,
+.feature-panel p,
+.post-card p {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.62;
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.button {
+  border: 1px solid #111111;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  font: 700 0.9rem var(--sans);
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.button.primary {
+  background: #111111;
+  color: #ffffff;
+}
+
+.button.secondary {
+  background: transparent;
+}
+
+.feature-panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 34px;
+}
+
+.feature-panel h2 {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.2vw, 3.35rem);
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.feature-panel p {
+  position: relative;
+  z-index: 1;
+}
+
+.prism-lines {
+  position: absolute;
+  inset: 28px;
+  z-index: 0;
+  opacity: 0.78;
+}
+
+.prism-lines span {
+  position: absolute;
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  transform: rotate(var(--angle));
+}
+
+.prism-lines span:nth-child(1) {
+  --angle: 16deg;
+  width: 64%;
+  height: 42%;
+  left: 12%;
+  top: 8%;
+  background: rgba(225, 243, 254, 0.58);
+}
+
+.prism-lines span:nth-child(2) {
+  --angle: -14deg;
+  width: 52%;
+  height: 36%;
+  right: 4%;
+  top: 22%;
+  background: rgba(251, 243, 219, 0.6);
+}
+
+.prism-lines span:nth-child(3) {
+  --angle: 32deg;
+  width: 40%;
+  height: 46%;
+  left: 18%;
+  bottom: 16%;
+  background: rgba(253, 235, 236, 0.55);
+}
+
+.prism-lines span:nth-child(4) {
+  --angle: -38deg;
+  width: 30%;
+  height: 30%;
+  right: 18%;
+  bottom: 20%;
+  background: rgba(237, 243, 236, 0.72);
+}
+
+.blog-layout {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr) 220px;
+  gap: 18px;
+}
+
+.blog-index,
+.post-reader,
+.post-toc {
+  min-height: 0;
+  overflow: auto;
+  padding: 28px;
+}
+
+/* Make the blog archive and article panels allow horizontal scrolling within
+   the panels instead of forcing the entire page to scroll. */
+.blog-index,
+.post-reader {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.post-toc {
+  padding: 24px;
+}
+
+.section-heading h1 {
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  margin-bottom: 12px;
+}
+
+.contact-layout .section-heading h1 {
+  max-width: 460px;
+  font-size: clamp(2.45rem, 4vw, 4.15rem);
+  line-height: 1.06;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.social-link {
+  min-width: 118px;
+}
+
+.post-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.post-card {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 16px;
+  cursor: pointer;
+  font: inherit;
+  overflow: hidden;
+}
+
+.post-card.active,
+.post-card:hover {
+  background: #fbfbfa;
+  border-color: rgba(0, 0, 0, 0.16);
+}
+
+.post-card h2 {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  line-height: 1.15;
+  margin: 0 0 10px;
+}
+
+.post-card-details {
+  display: grid;
+  gap: 9px;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(-4px);
+  transition:
+    max-height 220ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.post-card:hover .post-card-details,
+.post-card:focus-visible .post-card-details {
+  max-height: 220px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 12px;
+}
+
+.post-card .tag {
+  width: max-content;
+}
+
+.post-excerpt {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.post-reader {
+  line-height: 1.72;
+}
+
+/* The reader stays at natural size; scrollbars are handled by the panel itself. */
+.post-reader.fit-enabled {
+  overflow: auto;
+}
+.post-reader .post-content {
+  transition: transform 160ms ease;
+  will-change: transform;
+}
+
+.post-reader h1 {
+  font-size: clamp(2.3rem, 4.2vw, 4rem);
+  line-height: 0.98;
+  scroll-margin-top: 20px;
+}
+
+.post-reader h2,
+.post-reader h3 {
+  font-family: var(--serif);
+  line-height: 1.1;
+  margin: 30px 0 10px;
+  scroll-margin-top: 20px;
+}
+
+.post-reader h4 {
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  line-height: 1.2;
+  margin: 22px 0 8px;
+  scroll-margin-top: 20px;
+}
+
+.toc-list {
+  display: grid;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.toc-link {
+  border-left: 2px solid var(--line);
+  color: var(--muted);
+  display: block;
+  font-size: 0.86rem;
+  line-height: 1.35;
+  padding: 7px 0 7px 12px;
+}
+
+.toc-link.level-3 {
+  margin-left: 10px;
+  font-size: 0.8rem;
+}
+
+.toc-link.active,
+.toc-link:hover {
+  border-color: #111111;
+  color: var(--ink);
+}
+
+.toc-empty {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 14px;
+}
+
+.post-reader p,
+.post-reader li {
+  color: #30302f;
+  font-size: 1.02rem;
+}
+
+.post-reader a.md-link {
+  color: var(--blue-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.post-reader a.md-link:hover {
+  color: #134b74;
+}
+
+.post-reader img.md-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 16px auto;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+
+.post-reader blockquote {
+  border-left: 3px solid #111111;
+  margin: 26px 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 1.3rem;
+}
+
+.post-reader ul,
+.post-reader ol {
+  padding-left: 22px;
+}
+
+/* Code block styling */
+.post-reader pre {
+  background: #f8f8f8;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  margin: 16px 0;
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  overflow: auto;
+  white-space: pre;
+}
+.post-reader pre code {
+  display: block;
+  color: var(--ink);
+  background: transparent;
+  padding: 0;
+}
+
+/* Prism code overrides to better fit the blog */
+.post-reader pre[class*="language-"] {
+  background: #1f2430;
+  border-color: #2d3340;
+  color: #e6edf3;
+}
+.post-reader pre[class*="language-"] code {
+  color: inherit;
+}
+.post-reader .token.function,
+.post-reader .token.builtin,
+.post-reader .token.keyword,
+.post-reader .token.operator,
+.post-reader .token.selector,
+.post-reader .token.attr-name,
+.post-reader .token.property {
+  color: #7dd3fc;
+}
+.post-reader .token.string,
+.post-reader .token.char,
+.post-reader .token.attr-value,
+.post-reader .token.inserted {
+  color: #86efac;
+}
+.post-reader .token.number,
+.post-reader .token.boolean,
+.post-reader .token.constant,
+.post-reader .token.symbol {
+  color: #fda4af;
+}
+.post-reader .token.comment,
+.post-reader .token.prolog,
+.post-reader .token.doctype,
+.post-reader .token.cdata {
+  color: #94a3b8;
+}
+
+/* Smaller inline code styling is already defined; ensure it remains readable inside pre */
+.post-reader code {
+  font-family: var(--mono);
+}
+
+/* Styling for <small> used inside Markdown */
+.post-reader .md-small {
+  font-size: 0.9em;
+  color: var(--muted);
+}
+
+/* Markdown table styles */
+.md-table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: collapse;
+  margin: 18px auto;
+  background: transparent;
+}
+.md-table th,
+.md-table td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: center;
+  vertical-align: top;
+}
+.md-table th {
+  background: #fbfbfa;
+  font-weight: 700;
+}
+.md-table td.numeric {
+  text-align: center;
+}
+/* Prevent long content from causing horizontal page scroll */
+.post-reader img,
+.post-reader table,
+.post-reader pre {
+  max-width: 100%;
+  height: auto;
+}
+/* Let tables overflow horizontally so the panel can show a scrollbar */
+.post-reader .md-table {
+  display: table;
+  overflow: visible;
+}
+/* Preformatted blocks naturally scroll horizontally inside the panel */
+.post-reader pre {
+  overflow-x: auto;
+}
+/* Break very long words/URLs to avoid horizontal overflow */
+.post-reader p,
+.post-reader li,
+.post-reader td,
+.post-reader th {
+  word-break: break-word;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 0.86fr 1.14fr;
+  align-content: center;
+  gap: 36px;
+  padding: clamp(26px, 5vw, 64px);
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.contact-form .full,
+.contact-form button {
+  grid-column: 1 / -1;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fbfbfa;
+  color: var(--ink);
+  font: 1rem var(--sans);
+  padding: 12px 13px;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  max-height: 180px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #111111;
+  background: #ffffff;
+}
+
+.reveal {
+  animation: enter 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 860px) {
+  .page-shell {
+    width: min(100% - 20px, 680px);
+    padding: 10px 0;
+  }
+
+  .site-header {
+    height: auto;
+    min-height: 56px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .site-nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .site-nav a {
+    text-align: center;
+  }
+
+  .home-grid,
+  .blog-layout,
+  .contact-layout {
+    height: auto;
+    min-height: 0;
+  }
+
+  .home-grid,
+  .blog-layout,
+  .contact-layout,
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+
+  .home-copy,
+  .feature-panel,
+  .blog-index,
+  .post-reader,
+  .post-toc,
+  .contact-layout {
+    padding: 22px;
+  }
+
+  .home-copy h1 {
+    font-size: clamp(2.75rem, 11vw, 3.15rem);
+    line-height: 0.94;
+  }
+
+  .feature-panel {
+    min-height: 320px;
+  }
+
+  .blog-index,
+  .post-reader,
+  .post-toc {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .post-toc {
+    order: 2;
+  }
+
+  .post-reader {
+    order: 3;
+  }
+}
