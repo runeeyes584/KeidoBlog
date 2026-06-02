@@ -8,5 +8,46 @@
     "readingTime": "30 phút đọc",
     "excerpt": "Tổng quan về Cấu trúc dữ liệu và Giải thuật cho dân không chuyên :D",
     "file": "posts/dsa-is-simple.md"
+  },
+  {
+    "slug": "thi-giac-may-tinh-trong-chuong-trinh-dai-hoc",
+    "title": "Thị giác máy tính trong chương trình đại học",
+    "date": "2024-12-02",
+    "author": "Kaleidoscope",
+    "category": "Programming",
+    "readingTime": "25 phút đọc",
+    "excerpt": "Giới thiệu những gì căn bản về thị giác máy tính được dạy ở trương trình đại học.",
+    "file": "posts/post-computer_vision.md"
+  },
+  {
+    "slug": "hoc-may-va-hoc-sau-kien-thuc-nen-tuong-danh-cho-sinh-vien-dai-hoc",
+    "title": "Nhập môn AI: Học máy và học sâu",
+    "date": "2024-12-05",
+    "author": "Kaleidoscope",
+    "category": "Programming",
+    "readingTime": "30 phút đọc",
+    "excerpt": "Nhập môn Trí tuệ nhân tạo, Học máy và học sâu.",
+    "file": "posts/post-dl_ml.md"
+  },
+  {
+    "slug": "xu-ly-ngon-ngu-tu-nhien",
+    "title": "Nhập môn AI: Xử lí ngôn ngữ tự nhiên",
+    "date": "2025-02-09",
+    "author": "Kaleidoscope",
+    "category": "Programming",
+    "readingTime": "30 phút đọc",
+    "excerpt": "Nhập môn Trí tuệ nhân tạo - Xử lí ngôn ngữ tự nhiên.",
+    "file": "posts/post-nlp.md"
+  },
+  {
+    "slug": "cac-giai-thuat-phai-biet",
+    "title": "Các giải thuật phải biết của lập trình viên",
+    "date": "2025-05-04",
+    "author": "Kaleidoscope",
+    "category": "Programming",
+    "readingTime": "30 phút đọc",
+    "excerpt": "Nhập môn lập trình - Giải thuật phải biết",
+    "file": "posts/post-algorithms.md"
   }
 ]
+
