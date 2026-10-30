@@ -343,6 +343,28 @@ h1 {
   margin-bottom: 12px;
 }
 
+.sort-control {
+  display: grid;
+  gap: 7px;
+  margin-top: 20px;
+  max-width: 230px;
+  color: var(--green-ink);
+  font: 700 0.72rem var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sort-control select {
+  width: 100%;
+  min-height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--ink);
+  font: 600 0.9rem var(--sans);
+}
+
 .contact-layout .section-heading h1 {
   max-width: 460px;
   font-size: clamp(2.45rem, 4vw, 4.15rem);

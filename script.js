@@ -49,6 +49,7 @@ async function render() {
 async function initBlog(slugFromRoute) {
   const list = document.querySelector("#post-list");
   const reader = document.querySelector("#post-reader");
+  const sortControl = document.querySelector("#post-sort");
 
   try {
     posts = await fetch("posts/posts.json").then((response) => response.json());
@@ -57,29 +58,43 @@ async function initBlog(slugFromRoute) {
     return;
   }
 
-  posts.forEach((post, index) => {
-    const button = document.createElement("button");
-    button.className = "post-card";
-    button.type = "button";
-    button.dataset.slug = post.slug;
-    button.innerHTML = `
-      <h2>${escapeHtml(post.title)}</h2>
-      <span class="post-date">${escapeHtml(post.date)}</span>
-      <span class="post-card-details">
-        <span class="tag">${escapeHtml(post.category)}</span>
-        <span class="post-excerpt">${escapeHtml(post.excerpt)}</span>
-        <span class="post-meta">${escapeHtml(post.readingTime)}</span>
-      </span>
-    `;
-    button.addEventListener("click", () => {
-      window.location.hash = `#/blog/${post.slug}`;
+  const renderPostList = (sortOrder) => {
+    const sortedPosts = [...posts].sort((first, second) => {
+      const comparison = new Date(first.date) - new Date(second.date);
+      return sortOrder === "oldest" ? comparison : -comparison;
     });
-    button.style.setProperty("--index", index);
-    list.append(button);
+
+    list.replaceChildren();
+    sortedPosts.forEach((post, index) => {
+      const button = document.createElement("button");
+      button.className = "post-card";
+      button.type = "button";
+      button.dataset.slug = post.slug;
+      button.innerHTML = `
+        <h2>${escapeHtml(post.title)}</h2>
+        <span class="post-date">${escapeHtml(post.date)}</span>
+        <span class="post-card-details">
+          <span class="tag">${escapeHtml(post.category)}</span>
+          <span class="post-excerpt">${escapeHtml(post.excerpt)}</span>
+          <span class="post-meta">${escapeHtml(post.readingTime)}</span>
+        </span>
+      `;
+      button.addEventListener("click", () => {
+        window.location.hash = `#/blog/${post.slug}`;
+      });
+      button.style.setProperty("--index", index);
+      list.append(button);
+    });
+
+    const selectedPost = sortedPosts.find((post) => post.slug === slugFromRoute) || sortedPosts[0];
+    loadPost(selectedPost);
+  };
+
+  sortControl.addEventListener("change", (event) => {
+    renderPostList(event.target.value);
   });
 
-  const selectedPost = posts.find((post) => post.slug === slugFromRoute) || posts[0];
-  await loadPost(selectedPost);
+  renderPostList(sortControl.value);
 }
 
 async function loadPost(post) {
