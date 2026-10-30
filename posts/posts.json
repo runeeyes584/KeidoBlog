@@ -48,6 +48,15 @@
     "readingTime": "30 phút đọc",
     "excerpt": "Nhập môn lập trình - Giải thuật phải biết",
     "file": "posts/post-algorithms.md"
+  },
+  {
+    "slug": "usp-cua-than-trung-va-outlast-1",
+    "title": "USP của Thần Trùng và Outlast 1 - Hai cách tạo nên nỗi sợ trong game kinh dị",
+    "date": "2026-10-30",
+    "author": "Kaleidoscope",
+    "category": "Game Design",
+    "readingTime": "12 phút đọc",
+    "excerpt": "Phân tích điểm bán hàng độc nhất (USP) của Thần Trùng và Outlast 1, từ chất liệu tâm linh Việt Nam đến triết lý gameplay sinh tồn bất lực.",
+    "file": "posts/usp-than-trung-outlast-blog.md"
   }
 ]
-
