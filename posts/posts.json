@@ -68,5 +68,15 @@
     "readingTime": "5 phút đọc",
     "excerpt": "Gợi ý các concept E-magazine có cá tính thị giác riêng, từ bảo tàng những điều bình thường đến thành phố về đêm, cùng định hướng triển khai thành một ấn phẩm điện tử hoàn chỉnh.",
     "file": "posts/Y-tuong-chu-de-E-magazine.md"
+  },
+  {
+    "slug": "trai-nghiem-than-trung-outlast-narrative-design",
+    "title": "Trải nghiệm Thần Trùng và Outlast 1 dưới góc nhìn Narrative Design",
+    "date": "2026-11-11",
+    "author": "Kaleidoscope",
+    "category": "Game Design",
+    "readingTime": "15 phút đọc",
+    "excerpt": "Phân tích cách Outlast 1 và Thần Trùng dùng cốt truyện để hợp thức hóa gameplay, tạo cảm xúc và thúc đẩy người chơi khám phá.",
+    "file": "posts/trainghiemthantrungoutlast.md"
   }
 ]
