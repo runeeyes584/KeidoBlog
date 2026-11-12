@@ -78,5 +78,15 @@
     "readingTime": "15 phút đọc",
     "excerpt": "Phân tích cách Outlast 1 và Thần Trùng dùng cốt truyện để hợp thức hóa gameplay, tạo cảm xúc và thúc đẩy người chơi khám phá.",
     "file": "posts/trainghiemthantrungoutlast.md"
+  },
+  {
+    "slug": "thiet-ke-muc-tieu-trong-outlast-1-va-than-trung",
+    "title": "Thiết kế mục tiêu trong Outlast 1 và Thần Trùng",
+    "date": "2026-11-12",
+    "author": "Kaleidoscope",
+    "category": "Game Design",
+    "readingTime": "15 phút đọc",
+    "excerpt": "So sánh cách Outlast 1 và Thần Trùng tổ chức mục tiêu ngắn hạn, trung hạn và dài hạn để dẫn dắt cảm xúc, nhịp độ và động lực của người chơi.",
+    "file": "posts/3-y-tuong-thiet-ke-game-cua-outlast-va-than-trung.md"
   }
 ]
