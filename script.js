@@ -104,6 +104,23 @@ async function loadPost(post) {
     card.classList.toggle("active", card.dataset.slug === post.slug);
   });
 
+  if (post.type === "html") {
+    reader.innerHTML = `
+      <p class="post-meta">${escapeHtml(post.date)} · ${escapeHtml(post.author || "Kaleidoscope")}</p>
+      <iframe
+        class="special-post-frame"
+        src="${escapeHtml(post.file)}"
+        title="${escapeHtml(post.title)}"
+        loading="eager">
+      </iframe>
+    `;
+    toc.innerHTML = `
+      <p class="eyebrow">Mục lục</p>
+      <p class="toc-empty">Bài viết này có mục lục riêng.</p>
+    `;
+    return;
+  }
+
   try {
     const response = await fetch(post.file);
     if (!response.ok) {
@@ -154,7 +171,7 @@ async function loadPost(post) {
     reader.innerHTML = `
       <p class="post-meta">${escapeHtml(post.date)} · ${escapeHtml(post.author || "Kaleidoscope")}</p>
       <h1>Không tải được bài viết</h1>
-      <p>Kiểm tra lại đường dẫn file Markdown trong <code>posts/posts.json</code>: <code>${escapeHtml(post.file)}</code>.</p>
+      <p>Kiểm tra lại đường dẫn file bài viết trong <code>posts/posts.json</code>: <code>${escapeHtml(post.file)}</code>.</p>
     `;
     if (toc) {
       toc.innerHTML = "";

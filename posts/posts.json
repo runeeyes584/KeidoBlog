@@ -88,5 +88,16 @@
     "readingTime": "15 phút đọc",
     "excerpt": "So sánh cách Outlast 1 và Thần Trùng tổ chức mục tiêu ngắn hạn, trung hạn và dài hạn để dẫn dắt cảm xúc, nhịp độ và động lực của người chơi.",
     "file": "posts/3-y-tuong-thiet-ke-game-cua-outlast-va-than-trung.md"
+  },
+  {
+    "slug": "phan-tich-luat-choi-va-can-bang-than-trung-outlast-1",
+    "title": "Thần Trùng × Outlast 1: Luật chơi và Cân bằng Game",
+    "date": "2026-11-13",
+    "author": "Kaleidoscope",
+    "category": "Game Design",
+    "readingTime": "20 phút đọc",
+    "excerpt": "Phân tích luật chơi và cân bằng game của Thần Trùng và Outlast 1: cấu tạo, vận hành, độ khó, nhịp độ, onboarding và đường cong học tập.",
+    "file": "posts/special-post/phan-tich-than-trung-outlast.html",
+    "type": "html"
   }
 ]

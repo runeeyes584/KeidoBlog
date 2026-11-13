@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="Phân tích luật chơi và cân bằng game của Thần Trùng và Outlast 1: cấu tạo, vận hành, luật ngầm định, độ khó, nhịp độ, onboarding và đường cong học tập.">
+<title>Thần Trùng × Outlast 1 — Luật chơi & Cân bằng Game</title>
+<style>
+:root{
+ --bg:#0b0f14;--panel:#121a23;--panel2:#182330;--ink:#e9eef4;--muted:#a9b5c2;--line:#2a3948;
+ --accent:#a9d6cb;--accent2:#e4b681;--red:#e18a83;--blue:#8eb9dc;--green:#9bc9ae;
+ --shadow:0 18px 55px rgba(0,0,0,.22);--max:1120px;--radius:18px;
+}
+[data-theme="light"]{
+ --bg:#f3f5f7;--panel:#ffffff;--panel2:#edf2f5;--ink:#1c2732;--muted:#5e6b78;--line:#d5dee6;
+ --accent:#24695f;--accent2:#9a5d20;--red:#a33b35;--blue:#285f8d;--green:#2e7144;
+ --shadow:0 15px 45px rgba(28,39,50,.08);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.72 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;letter-spacing:.005em}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}a:hover{opacity:.82}
+img{max-width:100%;display:block}.progress{position:fixed;inset:0 0 auto;height:3px;background:transparent;z-index:80}.progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 87%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:var(--max);margin:auto;padding:10px 24px;display:flex;gap:14px;align-items:center;justify-content:space-between}
+.brand{font-size:13px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}.actions{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--ink);padding:8px 13px;font:inherit;font-size:13px;cursor:pointer}.btn:hover{border-color:var(--accent)}
+.layout{max-width:var(--max);margin:0 auto;padding:34px 24px 80px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:38px}
+aside{position:sticky;top:72px;align-self:start;max-height:calc(100vh - 95px);overflow:auto;padding:18px 14px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+.toc-label{margin:0 0 12px;color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.16em}
+.toc a{display:block;padding:7px 9px;border-radius:8px;color:var(--muted);font-size:13px;line-height:1.4;text-decoration:none}.toc a:hover,.toc a.active{background:var(--panel2);color:var(--ink)}.toc .sub{padding-left:20px;font-size:12px}
+main{min-width:0}.hero{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:26px;background:linear-gradient(125deg,#111b25 0%,#15212b 52%,#241d1b 100%);box-shadow:var(--shadow);padding:40px 38px 30px;margin-bottom:28px}
+.hero:after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;right:-130px;top:-160px;background:radial-gradient(circle,rgba(169,214,203,.17),transparent 68%);pointer-events:none}
+.kicker{color:var(--accent);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.18em}.hero h1{max-width:780px;margin:12px 0 14px;font-size:clamp(34px,5vw,58px);line-height:1.08;letter-spacing:-.04em}.hero p{max-width:730px;color:#c1ccd6;font-size:17px;margin:0}.hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.pill{border:1px solid rgba(220,235,245,.2);background:rgba(255,255,255,.05);padding:6px 10px;border-radius:999px;font-size:12px;color:#d7e0e8}
+.cover-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}.cover{position:relative;overflow:hidden;border-radius:14px;min-height:130px;background:#111}.cover img{width:100%;height:155px;object-fit:cover;opacity:.74;transition:transform .5s}.cover:hover img{transform:scale(1.04)}.cover:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.88))}.cover-label{position:absolute;z-index:2;bottom:12px;left:15px;color:white;font-size:18px;font-weight:800}.cover-label small{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;opacity:.8}
+.notice{border:1px solid var(--line);background:var(--panel);padding:16px 18px;border-radius:14px;color:var(--muted);font-size:14px;margin:20px 0 28px}.notice strong{color:var(--ink)}
+section{margin:44px 0}.section-kicker{color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}h2{font-size:clamp(25px,3.2vw,36px);line-height:1.18;letter-spacing:-.025em;margin:6px 0 15px}h3{font-size:21px;line-height:1.3;margin:28px 0 10px}h4{font-size:16px;margin:18px 0 6px}p{margin:10px 0 14px}ul,ol{padding-left:22px}li{margin:5px 0} .lead{font-size:18px;color:var(--muted);max-width:850px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}.card h3:first-child,.card h4:first-child{margin-top:0}.card p:last-child{margin-bottom:0}.tag{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:4px 9px;color:var(--muted);font-size:11px;font-weight:700}.tag.good{color:var(--green)}.tag.warn{color:var(--accent2)}.tag.risk{color:var(--red)}.small{font-size:13px;color:var(--muted)}
+figure{margin:22px 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--panel)}figure img{width:100%;max-height:360px;object-fit:cover}figcaption{padding:10px 14px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin:18px 0}.flow .node{flex:1 1 135px;min-width:120px;padding:13px 12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;text-align:center;font-size:13px;font-weight:700}.flow .arrow{align-self:center;color:var(--accent2);font-size:22px;font-weight:800}.branch{margin:18px 0;padding:18px;border:1px dashed var(--line);border-radius:16px;background:color-mix(in srgb,var(--panel) 65%,transparent)}.branch-title{margin:0 0 12px;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800}.branch-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.branch-row div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center;font-size:13px}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px;margin:16px 0;background:var(--panel)}table{border-collapse:collapse;width:100%;min-width:610px;font-size:14px}th,td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--line)}th{background:var(--panel2);color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em}tr:last-child td{border-bottom:0}td strong{color:var(--ink)}
+.chart-card{border:1px solid var(--line);border-radius:18px;padding:20px;background:var(--panel);margin:18px 0}.chart-title{font-weight:800;margin-bottom:4px}.chart-sub{color:var(--muted);font-size:12px;margin-bottom:18px}.bar-list{display:grid;gap:14px}.bar-row{display:grid;grid-template-columns:150px 1fr 112px;align-items:center;gap:12px;font-size:13px}.bar-label{color:var(--muted)}.track{height:10px;border-radius:999px;background:var(--panel2);overflow:hidden}.fill{height:100%;border-radius:999px}.fill.tt{background:linear-gradient(90deg,#b76d55,#e4b681)}.fill.ol{background:linear-gradient(90deg,#447b82,#a9d6cb)}.bar-note{font-size:12px;color:var(--muted);text-align:right}.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--muted)}.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}.curve{width:100%;height:auto;display:block}.curve text{font-family:inherit;fill:var(--muted);font-size:12px}.curve .axis{stroke:var(--line);stroke-width:1.3}.curve .line1{fill:none;stroke:#d9a46c;stroke-width:3}.curve .line2{fill:none;stroke:#80c2b7;stroke-width:3}.curve .dash{stroke:var(--line);stroke-dasharray:4 5}
+.quote{border-left:3px solid var(--accent2);padding:5px 0 5px 18px;margin:20px 0;color:var(--muted);font-size:17px}.verdict{border:1px solid var(--line);border-radius:18px;background:linear-gradient(120deg,var(--panel),var(--panel2));padding:22px;margin:24px 0}.verdict strong{color:var(--accent)}.sources{counter-reset:source;display:grid;gap:10px}.source{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;font-size:13px}.source:before{counter-increment:source;content:counter(source);width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--panel2);color:var(--accent);font-weight:800}.source p{margin:2px 0;color:var(--muted)}.source strong{color:var(--ink)}
+footer{padding-top:25px;margin-top:50px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.backtop{display:inline-block;margin-top:10px}.callout{display:flex;gap:12px;align-items:flex-start;border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));background:color-mix(in srgb,var(--accent) 8%,var(--panel));padding:16px;border-radius:14px;margin:18px 0}.callout .symbol{font-size:20px}.callout p{margin:0}.two-col-text{columns:2;column-gap:28px}.two-col-text p:first-child{margin-top:0}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:22px;padding-top:20px}aside{position:relative;top:auto;max-height:none}.toc{display:grid;grid-template-columns:repeat(2,1fr)}.toc-label{margin-bottom:8px}.hero{padding:30px 24px}}
+@media(max-width:620px){body{font-size:15px}.topbar-inner{padding:9px 14px}.brand{font-size:10px}.layout{padding:16px 14px 55px}.hero{border-radius:18px;padding:25px 19px}.hero h1{font-size:36px}.hero p{font-size:15px}.cover-grid,.grid2{grid-template-columns:1fr}.cover img{height:135px}.toc{grid-template-columns:1fr 1fr}.bar-row{grid-template-columns:95px 1fr;gap:8px}.bar-note{grid-column:2;text-align:left;margin-top:-5px}.branch-row{grid-template-columns:1fr}.flow .arrow{transform:rotate(90deg);margin:-3px auto}.two-col-text{columns:1}h3{font-size:19px}}
+@media print{ :root{--bg:#fff;--panel:#fff;--panel2:#f4f6f8;--ink:#18212a;--muted:#53606d;--line:#d5dbe0;--accent:#24695f;--accent2:#9a5d20;--shadow:none}body{background:#fff;color:#18212a;font-size:11pt}.progress,.topbar,aside,.actions,.backtop{display:none!important}.layout{display:block;max-width:none;padding:0}.hero{background:#17212a!important;color:white;print-color-adjust:exact;-webkit-print-color-adjust:exact}.hero p,.pill{color:#e3eaf0}.hero,.card,.chart-card,.verdict{box-shadow:none;break-inside:avoid}section{break-inside:auto;margin:28px 0}h2,h3{break-after:avoid}figure{break-inside:avoid}a{color:inherit;text-decoration:underline}a:after{content:""}table{font-size:10pt}.source{break-inside:avoid}.cover img{height:120px}}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Game Design · Comparative Analysis</div>
+    <div class="actions">
+      <button class="btn" id="themeBtn" type="button" aria-label="Đổi giao diện">☼ Giao diện</button>
+      <button class="btn" type="button" onclick="window.print()">⇩ In / Lưu PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside aria-label="Mục lục">
+    <p class="toc-label">Trong bài viết</p>
+    <nav class="toc" id="toc">
+      <a href="#overview">Tổng quan</a>
+      <a href="#framework">Khung phân tích</a>
+      <a href="#thantrung">01 · Thần Trùng</a>
+      <a class="sub" href="#tt-rules">Luật chơi</a>
+      <a class="sub" href="#tt-balance">Cân bằng</a>
+      <a href="#outlast">02 · Outlast 1</a>
+      <a class="sub" href="#ol-rules">Luật chơi</a>
+      <a class="sub" href="#ol-balance">Cân bằng</a>
+      <a href="#comparison">Đối chiếu</a>
+      <a href="#lessons">Bài học thiết kế</a>
+      <a href="#conclusion">Kết luận</a>
+      <a href="#sources">Nguồn tham khảo</a>
+    </nav>
+  </aside>
+  <main>
+    <header class="hero" id="top">
+      <div class="kicker">Phân tích thiết kế trò chơi · Horror games</div>
+      <h1>Thần Trùng <span style="color:#e4b681">×</span> Outlast 1</h1>
+      <p>Phân tích luật chơi và yếu tố cân bằng game: từ cách trò chơi định nghĩa hành động, vận hành hệ thống và dạy người chơi, đến cách điều tiết độ khó, nhịp độ và quá trình học tập.</p>
+      <div class="hero-meta">
+        <span class="pill">Luật cấu tạo · vận hành · ngầm định</span>
+        <span class="pill">Difficulty · Pacing · Onboarding</span>
+        <span class="pill">Learning Curve</span>
+      </div>
+      <div class="cover-grid">
+        <a class="cover" href="https://store.steampowered.com/app/1726400/The_Death__Thn_Trng/" target="_blank" rel="noopener">
+          <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1726400/header.jpg?t=1678019934" alt="Ảnh đại diện Thần Trùng trên Steam" loading="eager">
+          <span class="cover-label"><small>DUT Studio · 2022</small>THẦN TRÙNG</span>
+        </a>
+        <a class="cover" href="https://store.steampowered.com/app/238320/Outlast/" target="_blank" rel="noopener">
+          <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/238320/header.jpg?t=1666817106" alt="Ảnh đại diện Outlast trên Steam" loading="eager">
+          <span class="cover-label"><small>Red Barrels · 2013</small>OUTLAST 1</span>
+        </a>
+      </div>
+    </header>
+
+    <section id="overview">
+      <div class="section-kicker">Mở đầu</div><h2>Hai trò chơi kinh dị, hai triết lý thiết kế</h2>
+      <p class="lead">Thần Trùng và Outlast 1 cùng đặt người chơi vào vị thế dễ tổn thương, nhưng hướng sự chú ý đến hai kiểu trải nghiệm khác nhau: một bên khuyến khích khám phá và giải mã; bên còn lại buộc người chơi học cách sinh tồn.</p>
+      <div class="grid2">
+        <article class="card"><span class="tag warn">Thần Trùng</span><h3>Khám phá để hiểu</h3><p>Trải nghiệm xoay quanh quan sát không gian, thu thập thông tin, tương tác vật thể và giải các câu đố. Nỗi sợ thường được đặt xen giữa những khoảng khám phá.</p><p class="small">Trọng tâm: khám phá · suy luận · giải đố · không khí.</p></article>
+        <article class="card"><span class="tag good">Outlast 1</span><h3>Học cách sống sót</h3><p>Người chơi không có vũ khí để chủ động xử lý kẻ địch. Máy quay, pin, nơi ẩn nấp và địa hình trở thành các công cụ để chạy trốn và duy trì sự sống.</p><p class="small">Trọng tâm: quan sát · trốn tránh · quản lý tài nguyên · sinh tồn.</p></article>
+      </div>
+      <div class="notice"><strong>Luận điểm chính:</strong> Outlast thể hiện sự liên kết cơ chế và quá trình tích lũy kỹ năng rõ hơn. Thần Trùng có bản sắc bối cảnh và cách phối hợp khám phá – giải đố đáng chú ý, nhưng độ rõ ràng của manh mối và sự đồng đều của thử thách chưa thật ổn định.</div>
+    </section>
+
+    <section id="framework">
+      <div class="section-kicker">Cách tiếp cận</div><h2>Khung phân tích luật chơi và cân bằng</h2>
+      <div class="table-wrap"><table><thead><tr><th>Khái niệm</th><th>Câu hỏi cần trả lời</th><th>Ví dụ trong game kinh dị</th></tr></thead><tbody>
+        <tr><td><strong>Luật cấu tạo</strong><br><span class="small">Constitutive</span></td><td>Trò chơi gồm những thành phần, mục tiêu, hành động và giới hạn nào?</td><td>Người chơi được chạy, trốn, tương tác hay chiến đấu?</td></tr>
+        <tr><td><strong>Luật vận hành</strong><br><span class="small">Operational</span></td><td>Các hành động tác động lên hệ thống ra sao, điều kiện nào kích hoạt kết quả?</td><td>Khi bị phát hiện, AI truy đuổi như thế nào; pin tiêu hao ra sao?</td></tr>
+        <tr><td><strong>Luật ngầm định</strong><br><span class="small">Implicit</span></td><td>Người chơi tự suy ra điều gì từ môi trường, âm thanh và phản hồi?</td><td>Vệt máu chỉ đường; tiếng bước chân báo hiệu địch đến gần.</td></tr>
+      </tbody></table></div>
+      <div class="grid2">
+        <div class="card"><h3>Cân bằng độ khó</h3><p>Thử thách có tương xứng với kỹ năng, công cụ và thông tin mà người chơi được cung cấp không?</p></div>
+        <div class="card"><h3>Cân bằng nhịp độ</h3><p>Trò chơi luân phiên căng thẳng, khám phá và giải tỏa như thế nào để cảm xúc không bị chai lì?</p></div>
+        <div class="card"><h3>Onboarding</h3><p>Người chơi mới được dạy mục tiêu, điều khiển và quy tắc cốt lõi bằng cách nào?</p></div>
+        <div class="card"><h3>Đường cong học tập</h3><p>Kỹ năng người chơi có được tích lũy, kết hợp và phát triển qua các giai đoạn không?</p></div>
+      </div>
+      <p class="small">Lưu ý phương pháp: cân bằng game chơi đơn được xem xét ở cấp độ trải nghiệm người chơi, không phải cân bằng đối kháng giữa các nhân vật hay phe phái.</p>
+    </section>
+
+    <section id="thantrung">
+      <div class="section-kicker">01 · Game case study</div><h2>Thần Trùng (The Death)</h2>
+      <p class="lead">Thần Trùng là game kinh dị tâm lý – phiêu lưu của DUT Studio, lấy bối cảnh Hà Nội năm 2022. Mô tả trên Steam xác định lối chơi thiên về khám phá theo phong cách walking simulator, có câu đố và nhiều kết thúc.<a href="#src-tt-steam">[1]</a></p>
+      <figure><img src="https://cellphones.com.vn/sforum/wp-content/uploads/2022/09/20220917180718_1.jpg" alt="Một con hẻm tối trong Thần Trùng" loading="lazy"><figcaption>Không gian đô thị Việt Nam và con hẻm tối là một phần quan trọng tạo nên cảm giác gần gũi nhưng bất an. Ảnh: Sforum.<a href="#src-sforum"> [2]</a></figcaption></figure>
+      <div id="tt-rules">
+        <h3>1. Luật chơi</h3>
+        <h4>1.1. Luật cấu tạo</h4>
+        <p>Cấu trúc cơ bản có thể gom thành bốn nhóm:</p>
+        <ul><li><strong>Mục tiêu:</strong> khám phá bí mật đằng sau những hiện tượng kỳ bí, tìm đường tiếp tục và tiếp cận các kết thúc.</li><li><strong>Hành động:</strong> di chuyển, quan sát, tương tác với vật thể, thu thập vật phẩm/tài liệu và giải câu đố.</li><li><strong>Giới hạn:</strong> nhân vật không được xây dựng như một chiến binh có thể đối đầu trực tiếp với thế lực siêu nhiên; phần lớn thời gian người chơi phải khám phá hoặc phản ứng trước nguy hiểm.</li><li><strong>Thành phần hỗ trợ:</strong> vật phẩm, manh mối, tài liệu, các cơ chế giải đố và những phân đoạn chạy trốn.</li></ul>
+        <p><strong>Đánh giá:</strong> luật cấu tạo dễ tiếp cận, số lượng hành động không quá lớn và đều phục vụ việc khám phá. Điểm hạn chế là các câu đố thường vận hành như những thử thách riêng, chưa tạo thành một hệ thống kỹ năng được mở rộng rõ rệt qua tiến trình.</p>
+        <h4>1.2. Luật vận hành</h4>
+        <p>Vòng lặp chính có thể mô tả như sau:</p>
+        <div class="flow" aria-label="Vòng lặp gameplay Thần Trùng"><div class="node">Khám phá khu vực</div><div class="arrow">→</div><div class="node">Quan sát manh mối</div><div class="arrow">→</div><div class="node">Thu thập vật phẩm</div><div class="arrow">→</div><div class="node">Giải đố / mở lối</div></div>
+        <div class="branch"><p class="branch-title">Nhánh sự kiện nguy hiểm</p><div class="branch-row"><div><strong>Không có sự kiện</strong><br>Tiếp tục khám phá</div><div><strong>Có nguy hiểm</strong><br>Phản ứng / chạy trốn</div><div><strong>Vượt qua</strong><br>Trở lại tiến trình</div></div></div>
+        <p>Cơ chế tương tác thường yêu cầu tìm đúng vật phẩm và sử dụng đúng ngữ cảnh. Các câu đố có quy tắc riêng; giải quyết chúng hoặc tìm đủ điều kiện sẽ giúp mở tiến trình tiếp theo. Một số tình huống có thể kết thúc bằng thất bại nếu người chơi phản ứng chậm.</p>
+        <p><strong>Đánh giá:</strong> cấu trúc tuyến tính giúp nhà phát triển kiểm soát thứ tự thông tin và tình huống. Tuy nhiên, các hệ thống ít tạo ra nhiều chiến lược phát sinh: phần lớn người chơi đang thực hiện cách giải đã được thiết kế sẵn, thay vì kết hợp nhiều công cụ để tự tạo lối xử lý.</p>
+        <h4>1.3. Luật ngầm định</h4>
+        <ul><li>Vệt máu hoặc dấu hiệu bất thường có thể hoạt động như tín hiệu định hướng.</li><li>Vật thể được đặt ở vị trí khác thường thường đáng để kiểm tra.</li><li>Âm thanh, ánh sáng và thay đổi không gian có thể báo hiệu một sự kiện kinh dị.</li><li>Tài liệu và vật phẩm có thể vừa bổ sung cốt truyện vừa hỗ trợ tiến trình hoặc kết thúc.</li></ul>
+        <p><strong>Đánh giá:</strong> môi trường có thể đóng vai trò hướng dẫn mà không cần liên tục hiển thị chỉ dẫn. Nhưng cần phân biệt <em>tự suy luận</em> với <em>đoán ý nhà phát triển</em>: nếu vật phẩm quá khó nhận diện hoặc câu đố thiếu dữ kiện, vấn đề không còn nằm ở độ khó logic mà ở độ rõ ràng của thông tin.</p>
+      </div>
+      <div id="tt-balance">
+        <h3>2. Cân bằng game</h3>
+        <h4>2.1. Cân bằng độ khó</h4>
+        <p>Thử thách của Thần Trùng tập trung vào ba nhóm: tìm kiếm vật phẩm, giải câu đố và phản ứng trước các đoạn kinh dị. Độ khó giữa các câu đố chưa thật đồng đều: có câu dễ nhận ra, nhưng cũng có câu khiến người chơi khó hiểu vì sao một lời giải cụ thể lại hợp lý. Nhận xét này cũng xuất hiện trong bài đánh giá của Sforum.<a href="#src-sforum">[2]</a></p>
+        <p>Một nhận xét của người chơi trên trang Steam cho biết một số câu đố có thể tự hoàn tất nếu người chơi chờ quá lâu. Nếu cơ chế này vận hành như mô tả, nó giúp giảm tình trạng mắc kẹt và bảo đảm nhịp cốt truyện, nhưng đồng thời có thể làm giảm cảm giác thành tựu khi người chơi bỏ qua quá trình suy luận.<a href="#src-steam-review">[6]</a></p>
+        <div class="callout"><span class="symbol">⚖</span><p><strong>Vấn đề trọng tâm:</strong> có lúc độ khó đến từ sự thiếu rõ ràng của manh mối, chứ không phải từ một quy tắc logic đủ chặt để người chơi có thể học và làm chủ.</p></div>
+        <h4>2.2. Cân bằng nhịp độ</h4>
+        <p>Nhịp độ luân phiên giữa khám phá chậm, giải đố và những cú hù dọa hoặc phân đoạn nguy hiểm. Khoảng lặng giúp tạo dự cảm, nhưng nếu di chuyển hoặc tìm kiếm kéo dài mà không cung cấp thông tin mới, người chơi có thể cảm thấy đang đi lại hơn là tiến triển. Sforum cũng nhận xét tốc độ di chuyển chậm làm trải nghiệm kém liền mạch và cho rằng game dựa khá nhiều vào jumpscare.<a href="#src-sforum">[2]</a></p>
+        <h4>2.3. Onboarding</h4>
+        <p>Các thao tác căn bản như di chuyển, quan sát, tương tác và nhặt vật phẩm khá dễ tiếp cận. Khó khăn xuất hiện ở bước kế tiếp: người chơi có thể biết cách thao tác nhưng chưa chắc hiểu cách suy luận của từng câu đố, hoặc không biết một vật thể nào đó có thể tương tác.</p>
+        <p><strong>Nhận xét:</strong> onboarding cơ bản ổn, nhưng hướng dẫn tư duy giải quyết vấn đề chưa nhất quán. Một gợi ý tốt cần giúp người chơi biết phải quan sát điều gì mà không nói thẳng đáp án.</p>
+        <h4>2.4. Đường cong học tập</h4>
+        <p>Người chơi tích lũy kinh nghiệm tìm vật phẩm và đọc tín hiệu môi trường, nhưng không phải câu đố trước nào cũng giúp ích cho câu đố sau. Vì vậy, sự tiến bộ có xu hướng đến từ việc giải quyết từng thử thách riêng lẻ hơn là phát triển một bộ kỹ năng thống nhất.</p>
+        <div class="chart-card"><div class="chart-title">Mô hình học tập — Thần Trùng</div><div class="chart-sub">Sơ đồ khái niệm, không phải dữ liệu đo lường người chơi.</div>
+          <svg class="curve" viewBox="0 0 680 250" role="img" aria-label="Đường cong học tập minh họa của Thần Trùng: tăng nhẹ rồi có các bước nhảy theo từng loại câu đố.">
+            <line class="axis" x1="55" y1="200" x2="645" y2="200"/><line class="axis" x1="55" y1="25" x2="55" y2="200"/>
+            <line class="dash" x1="55" y1="150" x2="645" y2="150"/><line class="dash" x1="55" y1="100" x2="645" y2="100"/>
+            <path class="line1" d="M65 181 C120 172 145 164 205 155 S280 139 330 112 S405 110 455 106 S545 100 630 99"/>
+            <circle cx="65" cy="181" r="4" fill="#d9a46c"/><circle cx="205" cy="155" r="4" fill="#d9a46c"/><circle cx="330" cy="112" r="4" fill="#d9a46c"/><circle cx="455" cy="106" r="4" fill="#d9a46c"/>
+            <text x="55" y="222">Bắt đầu</text><text x="190" y="222">Khám phá</text><text x="315" y="222">Câu đố mới</text><text x="440" y="222">Vận dụng</text><text x="575" y="222">Cuối game</text><text x="10" y="32" transform="rotate(-90 10 32)">Kỹ năng</text><text x="510" y="242">Tiến trình →</text>
+          </svg>
+          <p class="small">Đường cong biểu thị sự tăng kỹ năng không đều: một thử thách mới có thể đòi hỏi một loại suy luận khác, thay vì chỉ nâng độ khó của kỹ năng đã học.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="outlast">
+      <div class="section-kicker">02 · Game case study</div><h2>Outlast 1</h2>
+      <p class="lead">Outlast là game survival horror góc nhìn thứ nhất do Red Barrels phát triển. Steam mô tả người chơi là phóng viên Miles Upshur, người phải sống sót tại Mount Massive Asylum; cách sinh tồn cốt lõi là chạy hoặc ẩn nấp, không phải chiến đấu.<a href="#src-outlast-steam">[3]</a></p>
+      <figure><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/238320/header.jpg?t=1666817106" alt="Ảnh đại diện Outlast với logo xanh trong bóng tối" loading="lazy"><figcaption>Outlast đặt trọng tâm vào việc khám phá một cơ sở tối tăm trong trạng thái luôn có nguy cơ bị săn đuổi. Ảnh đại diện: Steam.<a href="#src-outlast-steam"> [3]</a></figcaption></figure>
+      <div id="ol-rules">
+        <h3>1. Luật chơi</h3>
+        <h4>1.1. Luật cấu tạo</h4>
+        <p>Các thành phần cốt lõi gồm:</p>
+        <ul><li><strong>Mục tiêu:</strong> sống sót, khám phá Mount Massive Asylum và tìm hiểu sự thật phía sau nơi này.</li><li><strong>Hành động:</strong> đi, chạy, cúi, đóng cửa, vượt chướng ngại vật, ẩn nấp, quan sát và ghi hình.</li><li><strong>Giới hạn:</strong> nhân vật không có vũ khí để chủ động tiêu diệt kẻ địch; việc đối đầu trực diện thường là bất lợi.</li><li><strong>Tài nguyên:</strong> máy quay với chế độ nhìn đêm, pin, các vị trí ẩn nấp, tài liệu và vật phẩm mục tiêu.</li></ul>
+        <p>Máy quay vừa là công cụ quan sát vừa là cơ chế quản lý tài nguyên. Tủ và gầm giường không chỉ là đạo cụ bối cảnh mà trở thành phương án chiến thuật. Đây là ví dụ điển hình của <em>mechanical coherence</em>: nhiều cơ chế cùng củng cố một fantasy sinh tồn thống nhất.</p>
+        <h4>1.2. Luật vận hành</h4>
+        <div class="flow" aria-label="Vòng lặp gameplay Outlast"><div class="node">Khám phá / tìm mục tiêu</div><div class="arrow">→</div><div class="node">Quan sát môi trường</div><div class="arrow">→</div><div class="node">Đánh giá nguy hiểm</div></div>
+        <div class="branch"><p class="branch-title">Khi kẻ địch xuất hiện</p><div class="branch-row"><div><strong>Chưa bị phát hiện</strong><br>Tiếp tục lén đi</div><div><strong>Bị phát hiện</strong><br>Chạy / tạo khoảng cách</div><div><strong>Không còn đường chạy</strong><br>Tìm chỗ ẩn nấp</div></div></div>
+        <div class="flow"><div class="node">Cắt đuôi / thoát nguy hiểm</div><div class="arrow">→</div><div class="node">Quay lại mục tiêu</div><div class="arrow">→</div><div class="node">Mở khu vực tiếp theo</div></div>
+        <p><strong>Máy quay và pin:</strong> Night Vision giúp quan sát trong bóng tối nhưng tiêu hao pin. Người chơi phải quyết định lúc nào cần bật chế độ nhìn đêm và lúc nào có thể di chuyển dựa vào ánh sáng môi trường.</p>
+        <p><strong>Ẩn nấp và truy đuổi:</strong> tủ, gầm giường, cửa và địa hình tạo cơ hội cắt tầm nhìn hoặc mua thời gian. Khi bị bắt, người chơi thất bại và quay lại checkpoint gần nhất.</p>
+        <p><strong>Đánh giá:</strong> luật vận hành có sự phối hợp giữa nhiều cơ chế. Một quyết định như đóng cửa, chạy qua hành lang hay trốn trong tủ đều liên quan đến vị trí kẻ địch, đường thoát và mục tiêu cần hoàn thành. Tuy nhiên, nhiều phân đoạn vẫn được dàn dựng theo tuyến đường khá cứng.</p>
+        <h4>1.3. Luật ngầm định</h4>
+        <ul><li>Bóng tối làm giảm khả năng nhận biết; Night Vision hỗ trợ quan sát nhưng tiêu tốn pin.</li><li>Âm thanh, tiếng bước chân và phản ứng cơ thể của Miles cung cấp thông tin về nguy hiểm.</li><li>Mất dấu kẻ địch không đồng nghĩa nguy hiểm đã hoàn toàn kết thúc.</li><li>Cửa, khe hẹp và chỗ ẩn nấp là các thành phần có thể được tận dụng để thoát truy đuổi.</li></ul>
+        <p>Luật ngầm định của Outlast khuyến khích người chơi đọc trạng thái thế giới: địch ở đâu, đã phát hiện mình chưa, có thể chạy qua đâu và liệu chỗ nấp có đủ an toàn không. Người chơi học cách suy luận từ phản hồi thay vì chỉ làm theo hướng dẫn trên màn hình.</p>
+      </div>
+      <div id="ol-balance">
+        <h3>2. Cân bằng game</h3>
+        <h4>2.1. Cân bằng độ khó</h4>
+        <p>Độ khó đến từ thế yếu của nhân vật, bóng tối, áp lực truy đuổi và việc quản lý pin. Đây là các thử thách tương đối ăn khớp với bộ công cụ người chơi có: vì không thể đánh trả, họ cần quan sát, chạy và ẩn nấp.</p>
+        <p>Tuy nhiên, áp lực pin giảm đi khi người chơi tích lũy được nhiều pin. GameSpot ghi nhận pin ban đầu tạo căng thẳng tốt nhưng trở nên khá dồi dào sau vài giờ, làm suy yếu vai trò của cơ chế quản lý tài nguyên.<a href="#src-gamespot">[4]</a></p>
+        <p>Mặt khác, thất bại lặp lại cùng một phân đoạn có thể biến nỗi sợ thành quá trình thử sai. Khi đã biết lối đi và thời điểm kẻ địch xuất hiện, người chơi có thể xử lý tình huống bằng trí nhớ nhiều hơn là cảm giác bất an.</p>
+        <h4>2.2. Cân bằng nhịp độ</h4>
+        <p>Outlast thường luân phiên giữa khám phá, dự cảm, phát hiện nguy hiểm, truy đuổi và giải tỏa. Khoảng lặng giúp người chơi hồi phục tâm lý trước cao trào kế tiếp; âm thanh và phản ứng của nhân vật duy trì căng thẳng ngay cả khi chưa nhìn thấy kẻ địch.</p>
+        <p>Hạn chế là sự lặp lại của các kiểu kẻ địch và tình huống có thể làm giảm bất ngờ. GameSpot nhận xét nỗi sợ ban đầu suy giảm khi đối thủ và các pha hù dọa trở nên dễ đoán hơn.<a href="#src-gamespot">[4]</a> PC Gamer cũng nhận định game có nhiều khoảnh khắc hiệu quả nhưng không duy trì được cường độ ấy suốt toàn bộ trải nghiệm.<a href="#src-pcgamer">[5]</a></p>
+        <h4>2.3. Onboarding</h4>
+        <p>Outlast dạy cơ chế qua tình huống thực tế: người chơi nhanh chóng hiểu mình không thể chiến đấu, phải sử dụng máy quay, tìm pin và tận dụng nơi ẩn nấp. Khi một cuộc truy đuổi xảy ra, bản thân tình huống buộc người chơi thực hành cách chạy hoặc trốn.</p>
+        <p><strong>Điểm mạnh:</strong> người chơi học thông qua hành động và hậu quả. <strong>Điểm hạn chế:</strong> hành vi kẻ địch và mức độ an toàn của từng lựa chọn không phải lúc nào cũng được giải thích rõ; một số bài học chỉ được hiểu sau khi mắc sai lầm.</p>
+        <h4>2.4. Đường cong học tập</h4>
+        <p>Outlast phát triển năng lực người chơi bằng cách cho họ tái sử dụng và phối hợp những kỹ năng đã học: đọc không gian, quản lý pin, nghe ngóng, xác định đường thoát, tạo khoảng cách và chọn nơi ẩn nấp. Nhân vật không cần mở khóa nhiều kỹ năng mới; chính người chơi tiến bộ.</p>
+        <div class="chart-card"><div class="chart-title">Mô hình học tập — Outlast 1</div><div class="chart-sub">Sơ đồ khái niệm, không phải dữ liệu đo lường người chơi.</div>
+          <svg class="curve" viewBox="0 0 680 250" role="img" aria-label="Đường cong học tập minh họa của Outlast: năng lực tăng đều khi người chơi kết hợp kỹ năng sinh tồn.">
+            <line class="axis" x1="55" y1="200" x2="645" y2="200"/><line class="axis" x1="55" y1="25" x2="55" y2="200"/>
+            <line class="dash" x1="55" y1="150" x2="645" y2="150"/><line class="dash" x1="55" y1="100" x2="645" y2="100"/>
+            <path class="line2" d="M65 183 C120 170 145 160 205 144 S300 119 355 96 S455 67 510 51 S585 42 630 35"/>
+            <circle cx="65" cy="183" r="4" fill="#80c2b7"/><circle cx="205" cy="144" r="4" fill="#80c2b7"/><circle cx="355" cy="96" r="4" fill="#80c2b7"/><circle cx="510" cy="51" r="4" fill="#80c2b7"/>
+            <text x="55" y="222">Làm quen</text><text x="190" y="222">Biết trốn</text><text x="315" y="222">Đọc nguy hiểm</text><text x="445" y="222">Phối hợp</text><text x="575" y="222">Làm chủ</text><text x="10" y="32" transform="rotate(-90 10 32)">Kỹ năng</text><text x="510" y="242">Tiến trình →</text>
+          </svg>
+          <p class="small">Đường cong biểu thị sự tích lũy: những kỹ năng sinh tồn đã học được tái sử dụng trong những tình huống phức tạp hơn.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="comparison">
+      <div class="section-kicker">Đặt cạnh nhau</div><h2>So sánh tổng hợp</h2>
+      <div class="table-wrap"><table><thead><tr><th>Tiêu chí</th><th>Thần Trùng</th><th>Outlast 1</th><th>Nhận định</th></tr></thead><tbody>
+        <tr><td><strong>Luật cấu tạo</strong></td><td>Khám phá, giải đố, tương tác.</td><td>Sinh tồn, quan sát, chạy và ẩn nấp.</td><td>Outlast có trục cơ chế thống nhất hơn.</td></tr>
+        <tr><td><strong>Luật vận hành</strong></td><td>Tiến trình tuyến tính; thử thách thường tách biệt.</td><td>Nhiều hệ thống phối hợp trong cùng tình huống.</td><td>Outlast có nhiều quyết định chiến thuật hơn.</td></tr>
+        <tr><td><strong>Luật ngầm định</strong></td><td>Đọc dấu hiệu và vật thể trong môi trường.</td><td>Đọc hành vi địch, âm thanh và địa hình.</td><td>Cả hai đều dùng môi trường để truyền đạt thông tin.</td></tr>
+        <tr><td><strong>Độ khó</strong></td><td>Đôi lúc thiếu đồng đều giữa các câu đố.</td><td>Khá nhất quán; áp lực pin suy giảm về sau.</td><td>Outlast gắn độ khó với năng lực cốt lõi rõ hơn.</td></tr>
+        <tr><td><strong>Nhịp độ</strong></td><td>Có khoảng lặng nhưng di chuyển và giải đố có thể làm chậm mạch.</td><td>Luân phiên khám phá và truy đuổi; có lặp lại.</td><td>Outlast điều tiết căng thẳng rõ hơn.</td></tr>
+        <tr><td><strong>Onboarding</strong></td><td>Thao tác dễ học; gợi ý suy luận chưa đều.</td><td>Dạy qua tình huống và phản hồi gameplay.</td><td>Outlast tự nhiên hơn trong việc dạy cơ chế.</td></tr>
+        <tr><td><strong>Learning Curve</strong></td><td>Kỹ năng giải từng câu đố ít kế thừa nhau.</td><td>Kỹ năng sinh tồn được tích lũy và phối hợp.</td><td>Outlast thể hiện tiến bộ người chơi rõ hơn.</td></tr>
+      </tbody></table></div>
+      <div class="chart-card"><div class="chart-title">Bản đồ nhận định định tính</div><div class="chart-sub">Đây là so sánh tương đối bằng lập luận thiết kế, không phải điểm số khảo sát hay phép đo thực nghiệm.</div>
+        <div class="bar-list">
+          <div class="bar-row"><span class="bar-label">Tính nhất quán cơ chế</span><div class="track"><div class="fill tt" style="width:56%"></div></div><span class="bar-note">Thần Trùng · Trung bình</span></div>
+          <div class="bar-row"><span class="bar-label"></span><div class="track"><div class="fill ol" style="width:84%"></div></div><span class="bar-note">Outlast · Tốt</span></div>
+          <div class="bar-row"><span class="bar-label">Hướng dẫn qua chơi</span><div class="track"><div class="fill tt" style="width:58%"></div></div><span class="bar-note">Thần Trùng · Khá</span></div>
+          <div class="bar-row"><span class="bar-label"></span><div class="track"><div class="fill ol" style="width:86%"></div></div><span class="bar-note">Outlast · Tốt</span></div>
+          <div class="bar-row"><span class="bar-label">Tích lũy kỹ năng</span><div class="track"><div class="fill tt" style="width:48%"></div></div><span class="bar-note">Thần Trùng · Hạn chế</span></div>
+          <div class="bar-row"><span class="bar-label"></span><div class="track"><div class="fill ol" style="width:82%"></div></div><span class="bar-note">Outlast · Khá tốt</span></div>
+        </div>
+        <div class="legend"><span><i style="background:#d9a46c"></i>Thần Trùng</span><span><i style="background:#80c2b7"></i>Outlast 1</span></div>
+        <p class="small">Độ dài thanh chỉ minh họa mức đánh giá tương đối để dễ nhìn; không nên diễn giải như số liệu khách quan hoặc xếp hạng chính thức.</p>
+      </div>
+    </section>
+
+    <section id="lessons">
+      <div class="section-kicker">Ứng dụng vào Game Design</div><h2>Bốn bài học thiết kế rút ra</h2>
+      <div class="grid2">
+        <article class="card"><span class="tag good">01 · Tính nhất quán</span><h3>Luật phải phục vụ fantasy</h3><p>Outlast cho thấy một nhân vật có ít khả năng vẫn có thể tạo ra gameplay phong phú nếu các cơ chế đều củng cố cảm giác yếu thế và sinh tồn.</p></article>
+        <article class="card"><span class="tag warn">02 · Clarity</span><h3>Khó không đồng nghĩa mơ hồ</h3><p>Câu đố nên thử thách suy luận, không nên buộc người chơi đoán một quy tắc mà trò chơi chưa cung cấp đủ dữ kiện để suy ra.</p></article>
+        <article class="card"><span class="tag good">03 · Pacing</span><h3>Tương phản tạo nên căng thẳng</h3><p>Khoảng lặng giúp cao trào hiệu quả hơn. Tuy nhiên, khoảng nghỉ vẫn cần thông tin, khám phá hoặc thay đổi trạng thái để không biến thành thời gian chết.</p></article>
+        <article class="card"><span class="tag good">04 · Learning Curve</span><h3>Hãy để kỹ năng cũ kết hợp</h3><p>Thử thách mới có thể được tạo ra bằng cách phối hợp những kỹ năng đã học, thay vì liên tục thêm cơ chế hoặc chỉ tăng độ khó đột ngột.</p></article>
+      </div>
+    </section>
+
+    <section id="conclusion">
+      <div class="section-kicker">Kết luận</div><h2>Khác biệt nằm ở cách người chơi được dạy để đối mặt với nỗi sợ</h2>
+      <div class="verdict">
+        <p><strong>Thần Trùng</strong> hướng người chơi đến việc khám phá một câu chuyện kinh dị. Trò chơi có bản sắc văn hóa Việt Nam, tận dụng không gian gần gũi và phối hợp khám phá với giải đố. Điểm hạn chế đáng chú ý là độ rõ ràng của manh mối, độ đồng đều của câu đố và nhịp độ ở một số đoạn.</p>
+        <p><strong>Outlast 1</strong> hướng người chơi đến việc cảm nhận nguy hiểm khi phải sinh tồn. Các cơ chế máy quay, pin, ẩn nấp, truy đuổi và địa hình cùng củng cố một mục tiêu. Onboarding tự nhiên và kỹ năng người chơi có tính kế thừa rõ hơn, dù độ lặp lại của kẻ địch và tình huống có thể làm giảm nỗi sợ về cuối.</p>
+        <p class="quote">Nếu Thần Trùng đặt trọng tâm vào việc khiến người chơi khám phá một câu chuyện kinh dị, thì Outlast tập trung vào việc khiến người chơi cảm nhận sự nguy hiểm khi phải sinh tồn trong thế giới kinh dị đó.</p>
+      </div>
+      <p class="small">Kết luận này là đánh giá thiết kế định tính dựa trên cơ chế và các nhận xét được trích dẫn, không phải kết quả thử nghiệm người chơi có kiểm soát.</p>
+    </section>
+
+    <section id="sources">
+      <div class="section-kicker">Tư liệu đối chiếu</div><h2>Nguồn tham khảo</h2>
+      <div class="sources">
+        <div class="source" id="src-tt-steam"><div><strong><a href="https://store.steampowered.com/app/1726400/The_Death__Thn_Trng/" target="_blank" rel="noopener">Steam — The Death | Thần Trùng</a></strong><p>Trang chính thức của trò chơi trên Steam: mô tả thể loại, bối cảnh, lối chơi khám phá, câu đố và nhiều kết thúc.</p></div></div>
+        <div class="source" id="src-sforum"><div><strong><a href="https://cellphones.com.vn/sforum/danh-gia-than-trung-can-lang-kinh-hong-de-xem-game-viet" target="_blank" rel="noopener">Sforum — Đánh giá Thần Trùng: Cần lăng kính hồng để xem game Việt?</a></strong><p>Bài đánh giá năm 2022, tham chiếu cho nhận xét về bản sắc bối cảnh, âm thanh, độ khó câu đố, tốc độ di chuyển và jumpscare.</p></div></div>
+        <div class="source" id="src-outlast-steam"><div><strong><a href="https://store.steampowered.com/app/238320/Outlast/" target="_blank" rel="noopener">Steam — Outlast</a></strong><p>Trang chính thức của trò chơi: bối cảnh Mount Massive Asylum, vai trò của Miles Upshur và định hướng “chạy hoặc trốn”.</p></div></div>
+        <div class="source" id="src-gamespot"><div><strong><a href="https://www.gamespot.com/reviews/outlast-review/1900-6413987/" target="_blank" rel="noopener">GameSpot — Outlast Review</a></strong><p>Leif Johnson, 31/01/2014. Tham chiếu cho máy quay, pin, ẩn nấp, thiết kế âm thanh, độ lặp lại của kẻ địch và sự suy giảm bất ngờ.</p></div></div>
+        <div class="source" id="src-pcgamer"><div><strong><a href="https://www.pcgamer.com/outlast-review/" target="_blank" rel="noopener">PC Gamer — Outlast Review</a></strong><p>Christopher Livingston, 11/09/2013. Nhận định về không khí, Night Vision, pin và hiệu quả của các pha hù dọa trong toàn bộ trải nghiệm.</p></div></div>
+        <div class="source" id="src-steam-review"><div><strong><a href="https://store.steampowered.com/app/1726400/The_Death__Than_Trung/?curator_clanid=34647023&amp;l=english" target="_blank" rel="noopener">Steam — Một bài đánh giá người dùng về Thần Trùng</a></strong><p>Nguồn tham khảo mang tính trải nghiệm cá nhân cho nhận xét về một số câu đố được tự hoàn tất khi người chơi chờ lâu; không xem đây là mô tả chính thức của nhà phát triển.</p></div></div>
+      </div>
+    </section>
+    <footer>
+      <strong>Ghi chú biên tập:</strong> Bản HTML này được thiết kế để đọc trực tiếp trên trình duyệt. Ảnh minh họa được tải từ máy chủ Steam/Sforum nên cần kết nối Internet để hiện ảnh; nội dung, bảng, biểu đồ SVG và sơ đồ luồng đã nằm trực tiếp trong file. Các đường dẫn nguồn mở trong tab mới.
+      <br>© Bản phân tích học thuật / Game Design · Cập nhật trình bày: 13/11/2026.
+      <br><a class="backtop" href="#top">↑ Trở về đầu trang</a>
+    </footer>
+  </main>
+</div>
+<script>
+(() => {
+  const root = document.documentElement;
+  const btn = document.getElementById('themeBtn');
+  btn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    btn.textContent = next === 'light' ? '☾ Giao diện' : '☼ Giao diện';
+  });
+  const bar = document.getElementById('progressBar');
+  const updateProgress = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+    bar.style.width = pct + '%';
+  };
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  updateProgress();
+  const links = [...document.querySelectorAll('#toc a')];
+  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+      }
+    });
+  }, {rootMargin:'-18% 0px -72% 0px'});
+  sections.forEach(s => observer.observe(s));
+})();
+</script>
+</body>
+</html>
