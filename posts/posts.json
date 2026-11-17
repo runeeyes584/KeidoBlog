@@ -99,5 +99,16 @@
     "excerpt": "Phân tích luật chơi và cân bằng game của Thần Trùng và Outlast 1: cấu tạo, vận hành, độ khó, nhịp độ, onboarding và đường cong học tập.",
     "file": "posts/special-post/phan-tich-than-trung-outlast.html",
     "type": "html"
+  },
+  {
+    "slug": "phan-tich-game-world-than-trung-outlast-1",
+    "title": "Thần Trùng × Outlast 1: Phân tích Game World",
+    "date": "2026-11-17",
+    "author": "Kaleidoscope",
+    "category": "Game Design",
+    "readingTime": "25 phút đọc",
+    "excerpt": "Phân tích Game World của Thần Trùng và Outlast 1 qua bản sắc, không gian, lịch sử, văn hóa, xã hội, environmental storytelling và tính nhất quán.",
+    "file": "posts/special-post/phan-tich-game-world-than-trung-outlast.html",
+    "type": "html"
   }
 ]

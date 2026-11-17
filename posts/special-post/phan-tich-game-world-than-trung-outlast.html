@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="Phân tích và đánh giá Game World của Thần Trùng và Outlast 1: bản sắc, không gian, lịch sử, văn hóa, xã hội, environmental storytelling và tính nhất quán.">
+<title>Thần Trùng × Outlast 1 — Phân tích Game World</title>
+<style>
+:root{
+ --bg:#0b0f14;--panel:#121a23;--panel2:#182330;--ink:#e9eef4;--muted:#a9b5c2;--line:#2a3948;
+ --accent:#a9d6cb;--accent2:#e4b681;--red:#e18a83;--blue:#8eb9dc;--green:#9bc9ae;
+ --shadow:0 18px 55px rgba(0,0,0,.22);--max:1160px;--radius:18px;
+}
+[data-theme="light"]{
+ --bg:#f3f5f7;--panel:#fff;--panel2:#edf2f5;--ink:#1c2732;--muted:#5e6b78;--line:#d5dee6;
+ --accent:#24695f;--accent2:#9a5d20;--red:#a33b35;--blue:#285f8d;--green:#2e7144;
+ --shadow:0 15px 45px rgba(28,39,50,.08);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:94px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.76 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;letter-spacing:.005em}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}a:hover{opacity:.82}
+img{max-width:100%;display:block}.progress{position:fixed;inset:0 0 auto;height:3px;background:transparent;z-index:90}.progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bg) 87%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:var(--max);margin:auto;padding:10px 24px;display:flex;gap:14px;align-items:center;justify-content:space-between}
+.brand{font-size:12px;font-weight:850;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}.actions{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--ink);padding:8px 13px;font:inherit;font-size:13px;cursor:pointer}.btn:hover{border-color:var(--accent)}
+.layout{max-width:var(--max);margin:0 auto;padding:34px 24px 80px;display:grid;grid-template-columns:236px minmax(0,1fr);gap:38px}
+aside{position:sticky;top:72px;align-self:start;max-height:calc(100vh - 94px);overflow:auto;padding:18px 14px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+.toc-label{margin:0 0 12px;color:var(--muted);font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.16em}
+.toc a{display:block;padding:7px 9px;border-radius:8px;color:var(--muted);font-size:13px;line-height:1.4;text-decoration:none}.toc a:hover,.toc a.active{background:var(--panel2);color:var(--ink)}.toc .sub{padding-left:20px;font-size:12px}
+main{min-width:0}.hero{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:26px;background:linear-gradient(125deg,#111b25 0%,#15212b 52%,#241d1b 100%);box-shadow:var(--shadow);padding:42px 40px 30px;margin-bottom:28px;color:#e9eef4}
+.hero:after{content:"";position:absolute;width:390px;height:390px;border-radius:50%;right:-130px;top:-170px;background:radial-gradient(circle,rgba(169,214,203,.18),transparent 68%);pointer-events:none}
+.kicker{color:#a9d6cb;font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.18em}.hero h1{max-width:820px;margin:12px 0 14px;font-size:clamp(35px,5vw,60px);line-height:1.06;letter-spacing:-.045em}.hero p{max-width:790px;color:#c1ccd6;font-size:17px;margin:0}.hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.pill{border:1px solid rgba(220,235,245,.2);background:rgba(255,255,255,.05);padding:6px 10px;border-radius:999px;font-size:12px;color:#d7e0e8}
+.cover-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}.cover{position:relative;overflow:hidden;border-radius:14px;min-height:150px;background:#111}.cover img{width:100%;height:170px;object-fit:cover;opacity:.76;transition:transform .5s}.cover:hover img{transform:scale(1.04)}.cover:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.9))}.cover-label{position:absolute;z-index:2;bottom:12px;left:15px;color:white;font-size:18px;font-weight:850}.cover-label small{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:750;opacity:.8}
+.notice{border:1px solid var(--line);background:var(--panel);padding:16px 18px;border-radius:14px;color:var(--muted);font-size:14px;margin:20px 0 28px}.notice strong{color:var(--ink)}
+section{margin:48px 0}.section-kicker{color:var(--accent);font-size:11px;font-weight:850;letter-spacing:.16em;text-transform:uppercase}h2{font-size:clamp(26px,3.2vw,37px);line-height:1.18;letter-spacing:-.03em;margin:6px 0 15px}h3{font-size:21px;line-height:1.32;margin:29px 0 10px}h4{font-size:16px;margin:19px 0 6px}p{margin:10px 0 14px}ul,ol{padding-left:22px}li{margin:5px 0}.lead{font-size:18px;color:var(--muted);max-width:900px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}.card h3:first-child,.card h4:first-child{margin-top:0}.card p:last-child{margin-bottom:0}.tag{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:4px 9px;color:var(--muted);font-size:11px;font-weight:750}.tag.good{color:var(--green)}.tag.warn{color:var(--accent2)}.tag.risk{color:var(--red)}.small{font-size:13px;color:var(--muted)}
+figure{margin:22px 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--panel)}figure img{width:100%;max-height:390px;object-fit:cover}figcaption{padding:10px 14px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+.duo-figure{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:20px 0}.duo-figure figure{margin:0}.duo-figure img{height:220px}.duo-figure figcaption{min-height:56px}
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin:18px 0}.node{flex:1 1 140px;min-width:120px;padding:14px 12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;text-align:center;font-size:13px;font-weight:750}.arrow{align-self:center;color:var(--accent2);font-size:22px;font-weight:850}.branch{margin:18px 0;padding:18px;border:1px dashed var(--line);border-radius:16px;background:color-mix(in srgb,var(--panel) 65%,transparent)}.branch-title{margin:0 0 12px;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:850}.branch-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.branch-row div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center;font-size:13px}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px;margin:16px 0;background:var(--panel)}table{border-collapse:collapse;width:100%;min-width:650px;font-size:14px}th,td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--line)}th{background:var(--panel2);color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em}tr:last-child td{border-bottom:0}td strong{color:var(--ink)}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.compare-panel{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--panel)}.compare-panel img{width:100%;height:180px;object-fit:cover}.compare-panel .inner{padding:18px}.compare-panel h3{margin:0 0 7px}
+.pillar{border:1px solid var(--line);border-radius:16px;padding:18px;background:var(--panel);text-align:center}.pillar h3{margin:0 0 5px;font-size:19px}.pillar p{margin:0;color:var(--muted);font-size:13px}.stack{display:grid;gap:9px;max-width:680px;margin:18px auto}.stack .level{padding:15px;border-radius:12px;border:1px solid var(--line);text-align:center;background:var(--panel)}.stack .level.top{background:rgba(87,142,185,.12)}.stack .level.bottom{background:rgba(190,93,82,.1)}.stack .level b{display:block}.stack .level span{font-size:12px;color:var(--muted)}.stack-arrow{text-align:center;color:var(--accent2);font-size:20px;line-height:1}
+.quote{border-left:3px solid var(--accent2);padding:5px 0 5px 18px;margin:20px 0;color:var(--muted);font-size:17px}.verdict{border:1px solid var(--line);border-radius:18px;background:linear-gradient(120deg,var(--panel),var(--panel2));padding:22px;margin:24px 0}.verdict strong{color:var(--accent)}.callout{display:flex;gap:12px;align-items:flex-start;border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));background:color-mix(in srgb,var(--accent) 8%,var(--panel));padding:16px;border-radius:14px;margin:18px 0}.callout .symbol{font-size:20px}.callout p{margin:0}.sources{counter-reset:source;display:grid;gap:10px}.source{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;font-size:13px}.source:before{counter-increment:source;content:counter(source);width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--panel2);color:var(--accent);font-weight:850}.source p{margin:2px 0;color:var(--muted)}.source strong{color:var(--ink)}
+footer{padding-top:25px;margin-top:50px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.backtop{display:inline-block;margin-top:10px}.two-col-text{columns:2;column-gap:28px}.two-col-text p:first-child{margin-top:0}.statline{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.statline span{padding:7px 11px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-size:12px;color:var(--muted)}.statline b{color:var(--ink)}
+@media(max-width:940px){.layout{grid-template-columns:1fr;gap:22px;padding-top:20px}aside{position:relative;top:auto;max-height:none}.toc{display:grid;grid-template-columns:repeat(2,1fr)}.hero{padding:32px 25px}}
+@media(max-width:650px){body{font-size:15px}.topbar-inner{padding:9px 14px}.brand{font-size:10px}.layout{padding:16px 14px 55px}.hero{border-radius:18px;padding:26px 19px}.hero h1{font-size:37px}.hero p{font-size:15px}.cover-grid,.grid2,.grid3,.compare-grid,.duo-figure{grid-template-columns:1fr}.cover img{height:145px}.toc{grid-template-columns:1fr 1fr}.branch-row{grid-template-columns:1fr}.flow .arrow{transform:rotate(90deg);margin:-3px auto}.duo-figure img{height:190px}h3{font-size:19px}}
+@media print{ :root{--bg:#fff;--panel:#fff;--panel2:#f4f6f8;--ink:#18212a;--muted:#53606d;--line:#d5dbe0;--accent:#24695f;--accent2:#9a5d20;--shadow:none}body{background:#fff;color:#18212a;font-size:10.5pt}.progress,.topbar,aside,.actions,.backtop{display:none!important}.layout{display:block;max-width:none;padding:0}.hero{background:#17212a!important;color:white;print-color-adjust:exact;-webkit-print-color-adjust:exact}.hero p,.pill{color:#e3eaf0}.hero,.card,.verdict,.pillar,.compare-panel{box-shadow:none;break-inside:avoid}section{margin:28px 0}h2,h3{break-after:avoid}figure{break-inside:avoid}a{color:inherit;text-decoration:underline}a:after{content:""}table{font-size:9pt}.source{break-inside:avoid}.cover img{height:120px}.duo-figure img{height:160px}}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+<header class="topbar"><div class="topbar-inner"><div class="brand">Game Design · World-building Analysis</div><div class="actions"><button class="btn" id="themeBtn" type="button" aria-label="Đổi giao diện">◐ Giao diện</button><button class="btn" type="button" onclick="window.print()">⇩ In / Lưu PDF</button></div></div></header>
+<div class="layout">
+<aside aria-label="Mục lục"><p class="toc-label">Trong bài viết</p><nav class="toc" id="toc">
+<a href="#overview">Tổng quan</a><a href="#framework">Khung đánh giá</a>
+<a href="#thantrung">01 · Thần Trùng</a><a class="sub" href="#tt-identity">Bản sắc thế giới</a><a class="sub" href="#tt-space">Không gian & địa lý</a><a class="sub" href="#tt-history">Lịch sử & văn hóa</a><a class="sub" href="#tt-society">Xã hội & nhân vật</a><a class="sub" href="#tt-environment">Environmental Storytelling</a><a class="sub" href="#tt-coherence">Tính nhất quán</a>
+<a href="#outlast">02 · Outlast 1</a><a class="sub" href="#ol-identity">Bản sắc thế giới</a><a class="sub" href="#ol-space">Không gian & địa lý</a><a class="sub" href="#ol-history">Lịch sử & văn hóa</a><a class="sub" href="#ol-society">Xã hội & nhân vật</a><a class="sub" href="#ol-environment">Environmental Storytelling</a><a class="sub" href="#ol-coherence">Tính nhất quán</a>
+<a href="#comparison">Đối chiếu</a><a href="#lessons">Bài học thiết kế</a><a href="#conclusion">Kết luận</a><a href="#sources">Nguồn tham khảo</a></nav></aside>
+<main>
+<header class="hero" id="top">
+<div class="kicker">Phân tích thế giới game · Game World</div>
+<h1>Thần Trùng<br><span style="color:#a9d6cb">×</span> Outlast 1</h1>
+<p>Hai cách xây dựng thế giới kinh dị: một Hà Nội thân thuộc bị phủ bóng bởi tín ngưỡng dân gian, và một bệnh viện tâm thần biệt lập nơi khoa học, quyền lực doanh nghiệp cùng niềm tin tôn giáo tạo nên thảm họa.</p>
+<div class="hero-meta"><span class="pill">World-building</span><span class="pill">Environmental Storytelling</span><span class="pill">Cultural Identity</span><span class="pill">Comparative Game Design</span></div>
+<div class="cover-grid">
+<a class="cover" href="https://steamcommunity.com/app/1726400/screenshots/" target="_blank" rel="noopener"><img src="https://photo2.tinhte.vn/data/attachment-files/2022/09/6126287_20220915141607_1.jpg" alt="Hành lang khu nhà trọ trong Thần Trùng"><span class="cover-label"><small>Việt Nam · Đô thị</small>Thần Trùng</span></a>
+<a class="cover" href="https://steamcommunity.com/app/238320/screenshots/" target="_blank" rel="noopener"><img src="https://www.thefandomentals.com/wp-content/uploads/2023/06/outlast7_1000x600.jpg" alt="Mount Massive Asylum trong Outlast"><span class="cover-label"><small>Colorado · Thiết chế</small>Outlast 1</span></a>
+</div>
+</header>
+<div class="notice" id="overview"><strong>Phạm vi bài viết:</strong> Phân tích Game World, không đi sâu vào luật chơi hay cân bằng gameplay. Bài có tiết lộ một số tình tiết và bí mật quan trọng của hai trò chơi. Ảnh minh họa được tải từ các trang bên ngoài nên cần kết nối Internet để hiển thị; nội dung, bảng biểu và sơ đồ được lưu trực tiếp trong file HTML.</div>
+<section id="framework">
+<div class="section-kicker">01 · Khung phân tích</div><h2>Game World được đánh giá qua những gì?</h2>
+<p class="lead">Game World không chỉ là bản đồ hay nơi câu chuyện diễn ra. Nó bao gồm không gian, lịch sử, văn hóa, xã hội, nhân vật, quy luật tồn tại và những dấu vết giúp người chơi hiểu thế giới ấy.</p>
+<p>Cần phân biệt ba khái niệm: <b>Setting</b> là bối cảnh địa lý, thời gian và địa điểm; <b>World-building</b> là quá trình xây dựng lịch sử, văn hóa, xã hội và quy luật; còn <b>Game World</b> là thế giới người chơi thực sự trải nghiệm – gồm không gian, con người, sự kiện, môi trường và cách chúng tương tác.</p>
+<div class="grid3">
+<div class="card"><span class="tag">01 · Nhận diện</span><h3>Bản sắc thế giới</h3><p>Thế giới có đặc trưng riêng, dễ nhận diện và không bị hòa lẫn với những bối cảnh kinh dị khác hay không?</p></div>
+<div class="card"><span class="tag">02 · Không gian</span><h3>Địa lý & cấu trúc</h3><p>Các địa điểm có chức năng, liên kết và ý nghĩa; kiến trúc có phản ánh lịch sử hoặc xã hội không?</p></div>
+<div class="card"><span class="tag">03 · Quá khứ</span><h3>Lịch sử & văn hóa</h3><p>Tín ngưỡng, sự kiện quá khứ và biểu tượng văn hóa có tạo được nền tảng diễn giải thế giới không?</p></div>
+<div class="card"><span class="tag">04 · Con người</span><h3>Xã hội & nhân vật</h3><p>Các nhóm người, quan hệ, thiết chế và động cơ có khiến thế giới có cảm giác tồn tại độc lập không?</p></div>
+<div class="card"><span class="tag">05 · Kể chuyện</span><h3>Environmental Storytelling</h3><p>Môi trường có tự cung cấp thông tin để người chơi cảm nhận, suy luận và tái dựng sự kiện không?</p></div>
+<div class="card"><span class="tag">06 · Tổng hợp</span><h3>Tính nhất quán</h3><p>Các yếu tố có kết nối về chủ đề, nguyên nhân và hệ quả, hay chỉ là tập hợp chi tiết rời rạc?</p></div>
+</div>
+<div class="callout"><div class="symbol">✦</div><p><b>Một thế giới tốt không nhất thiết phải rộng.</b> Nó cần có bản sắc, chiều sâu và khiến người chơi cảm nhận rằng nơi đó đã tồn tại trước khi nhân vật chính xuất hiện – và sẽ tiếp tục tồn tại sau khi câu chuyện kết thúc.</p></div>
+</section>
+
+<section id="thantrung">
+<div class="section-kicker">02 · Case study</div><h2>Thần Trùng — Một Hà Nội quen thuộc nhưng đầy bất an</h2>
+<p class="lead">Thần Trùng lấy chất liệu từ không gian đô thị Việt Nam và truyền thuyết dân gian về trùng tang. Thế giới game có sức hấp dẫn lớn nhất ở khả năng biến những hình ảnh quen thuộc trong đời sống thành chất liệu kinh dị.</p>
+<div class="duo-figure">
+<figure><img src="https://photo2.tinhte.vn/data/attachment-files/2022/09/6126287_20220915141607_1.jpg" alt="Hành lang tối trong khu nhà trọ của Thần Trùng"><figcaption>Hành lang hẹp, cửa sắt và vật dụng đời thường tạo cảm giác một không gian đô thị Việt Nam cụ thể. Ảnh: Tinhte.</figcaption></figure>
+<figure><img src="https://images.steamusercontent.com/ugc/36685500481547665/36AA90FE75EDDA4C2C045BB105FBCC75902DC9D9/?ima=fit&imcolor=%23000000&impolicy=Letterbox&imw=1024&letterbox=false" alt="Hành lang phủ sắc đỏ trong Thần Trùng"><figcaption>Không gian tang lễ và sắc đỏ chuyển một hành lang quen thuộc thành bối cảnh siêu nhiên. Ảnh: Steam Community.</figcaption></figure>
+</div>
+<h3 id="tt-identity">1. Bản sắc thế giới — Một Hà Nội rất đỗi quen thuộc</h3>
+<p>Thần Trùng đặt người chơi vào một bối cảnh đô thị Việt Nam, gắn với khu nhà trọ và những hiện tượng kỳ bí. Điểm đặc biệt không nằm đơn thuần ở việc có ma quỷ, mà ở tính đời thường của thế giới trước khi hiện tượng siêu nhiên xuất hiện.</p>
+<ul><li>Những con ngõ nhỏ, khu tập thể và nhà trọ cũ.</li><li>Nền gạch hoa, cửa sắt, chuồng cọp và các chi tiết kiến trúc quen thuộc.</li><li>Biển hiệu cửa hàng, biển chỉ đường và đồ vật sinh hoạt.</li><li>Bàn thờ, ảnh thờ, quan tài và âm thanh gắn với tang lễ.</li></ul>
+<p>Đây không phải những vật thể xa lạ được tạo ra cho một thế giới giả tưởng. Chúng là những thứ người chơi Việt Nam có thể từng nhìn thấy trong đời sống. Vietgame Asia nhấn mạnh chính những chi tiết như biển ngách, biển hiệu hàng quán, ngõ nhỏ Hà Nội, nền gạch hoa, bàn thờ và nhạc đám ma đã tạo nên không khí bản địa rất rõ của trò chơi.<sup><a href="#src-vietgame">[2]</a></sup></p>
+<p><b>Tại sao điều này có giá trị?</b> Nỗi sợ không còn đến từ việc người chơi bước vào một thế giới hoàn toàn xa lạ. Nó đến từ việc một nơi vốn dĩ bình thường bỗng trở nên bất thường. Một hành lang chung cư cũ có thể đáng sợ hơn lâu đài ma quái vì người chơi dễ hình dung mình từng đi qua một nơi tương tự.</p>
+<div class="verdict"><span class="tag good">Điểm mạnh nổi bật</span><p><b>Thần Trùng có bản sắc địa phương rõ rệt.</b> Trò chơi không hòa lẫn vào mô-típ kinh dị phương Tây như lâu đài Gothic hay bệnh viện bỏ hoang kiểu Mỹ. Nó dựa vào chất liệu đô thị Việt Nam, kiến trúc cũ và hình ảnh tâm linh quen thuộc.</p><p class="small">Tuy nhiên, tái hiện một địa điểm có bản sắc chưa đồng nghĩa với việc xây dựng được một thế giới có chiều sâu ở mọi phương diện.</p></div>
+
+<h3 id="tt-space">2. Không gian và địa lý — Thế giới nhỏ nhưng gần gũi</h3>
+<p>Không gian của Thần Trùng tập trung vào các khu vực đô thị và căn nhà trọ gắn với câu chuyện. Phạm vi thế giới được thu hẹp dần: từ thành phố, vào khu phố, qua con ngõ, rồi đi sâu vào căn nhà và những lớp ký ức/ác mộng liên quan đến bi kịch.</p>
+<div class="flow" aria-label="Cấu trúc không gian Thần Trùng"><div class="node">Hà Nội<br><span class="small">Bối cảnh đời thường</span></div><div class="arrow">→</div><div class="node">Khu phố & ngõ nhỏ</div><div class="arrow">→</div><div class="node">Khu nhà trọ</div><div class="arrow">→</div><div class="node">Căn nhà mang bí mật</div><div class="arrow">→</div><div class="node">Ác mộng & ký ức</div></div>
+<p>Đây là cấu trúc thu hẹp dần phạm vi thế giới. Người chơi đi sâu hơn vào căn nhà đồng thời tiến gần hơn tới sự thật. Không gian địa lý cũng trở thành không gian khám phá cốt truyện.</p>
+<h4>Không gian đời thường và không gian siêu nhiên</h4>
+<div class="grid2"><div class="card"><span class="tag">Đời thường</span><h4>Không gian quen thuộc</h4><p>Nhà trọ, hành lang, phòng ở, đồ dùng sinh hoạt và dấu vết của một khu dân cư bình thường.</p></div><div class="card"><span class="tag warn">Siêu nhiên</span><h4>Không gian bị biến đổi</h4><p>Những căn phòng, hành lang và cơn ác mộng bị phủ bởi hình ảnh tang lễ, bóng ma và hiện tượng bất thường.</p></div></div>
+<p>Những phân đoạn ác mộng đưa người chơi đến gần hơn với quá khứ của gia đình gặp nạn. Nhờ vậy, cùng một thế giới có chiều sâu không gian lẫn chiều sâu thời gian: hiện tại và dấu vết của một bi kịch trước đó.</p>
+<p><b>Đánh giá:</b> Thần Trùng sử dụng tốt không gian hạn chế để tạo cảm giác gần gũi và ngột ngạt. Tuy nhiên, Hà Nội chủ yếu đóng vai trò bối cảnh bên ngoài; trải nghiệm thực tế tập trung vào khu nhà trọ và các không gian phục vụ diễn biến câu chuyện. Người chơi nhận diện được một Hà Nội đặc trưng nhưng chưa có nhiều cơ hội cảm nhận thành phố như một hệ sinh thái xã hội rộng lớn.</p>
+
+<h3 id="tt-history">3. Lịch sử và văn hóa — Khai thác tín ngưỡng dân gian Việt Nam</h3>
+<div class="callout"><div class="symbol">⌂</div><p><b>Chất liệu văn hóa cốt lõi:</b> bàn thờ, ảnh thờ, quan tài, nghi thức tang lễ và những âm thanh gắn với đám ma. Đây là những ký hiệu đời sống mà người chơi Việt có thể nhận diện ngay cả trước khi câu chuyện giải thích chúng.</p></div>
+<p>Thần Trùng không chỉ dùng ma quỷ như sinh vật xuất hiện để hù dọa. Trò chơi lấy cảm hứng từ quan niệm dân gian về <b>trùng tang</b> và <b>Thần Trùng</b>. Theo cách diễn giải mà trò chơi khai thác, đây là một hung thần gắn với việc linh hồn người chết bị tra khảo, khai ra danh tính người thân, từ đó dẫn tới những cái chết tiếp nối trong gia đình.<sup><a href="#src-vietgame">[2]</a></sup></p>
+<p>Yếu tố này tạo ra một nền tảng văn hóa khác với các truyền thuyết kinh dị phổ biến ở phương Tây. Cái chết không còn là một sự kiện riêng lẻ; nó được đặt trong mối liên hệ giữa huyết thống, người chết, người sống và số phận của cả gia đình.</p>
+<div class="quote">Từ “có một hồn ma đang tìm cách giết tôi” đến “một thế lực siêu nhiên đang thao túng số phận của cả gia đình, và tôi bị kéo vào bi kịch ấy”.</div>
+<div class="table-wrap"><table><thead><tr><th>Thành phần</th><th>Giá trị World-building</th></tr></thead><tbody>
+<tr><td><b>Bàn thờ, ảnh thờ</b></td><td>Gợi lên tín ngưỡng thờ cúng tổ tiên và mối liên hệ với người đã khuất.</td></tr>
+<tr><td><b>Quan tài, nhạc tang lễ</b></td><td>Gắn thế giới với cái chết và nghi thức tang ma.</td></tr>
+<tr><td><b>Kiến trúc nhà tập thể cũ</b></td><td>Tạo dấu ấn kiến trúc và đời sống đô thị Việt Nam.</td></tr>
+<tr><td><b>Tò he, trò chơi dân gian</b></td><td>Đưa chất liệu văn hóa đời thường vào trải nghiệm.</td></tr>
+<tr><td><b>Truyền thuyết Thần Trùng</b></td><td>Tạo nền tảng siêu nhiên cho cốt truyện và cách diễn giải bi kịch gia đình.</td></tr>
+</tbody></table></div>
+<p><b>Đánh giá:</b> Thần Trùng có lợi thế lớn ở chất liệu văn hóa, nhưng việc đưa nhiều biểu tượng văn hóa vào game không đồng nghĩa tất cả biểu tượng đã trở thành những phần có ý nghĩa sâu trong thế giới. Một bàn thờ có thể tạo không khí; để nó trở thành World-building sâu hơn, nó cần gắn với lịch sử căn nhà, gia đình, nghi thức hoặc quy luật siêu nhiên. Vietgame Asia đánh giá tiền đề văn hóa và bối cảnh của game tốt, trong khi cho rằng mạch truyện chưa khai thác hết tiềm năng ấy.<sup><a href="#src-vietgame">[2]</a></sup></p>
+
+<h3 id="tt-society">4. Xã hội và nhân vật — Một thế giới nhìn qua bi kịch gia đình</h3>
+<p>Một thế giới sống động thường có nhiều lớp xã hội: gia đình, hàng xóm, cộng đồng, tổ chức và những quan hệ tồn tại độc lập với nhân vật chính. Thần Trùng có những yếu tố như vậy, nhưng phần lớn được phản ánh gián tiếp.</p>
+<ul><li>Lời kể và tin đồn của người dân xung quanh.</li><li>Những câu chuyện liên quan đến căn nhà.</li><li>Đồ vật và dấu tích của gia đình đã gặp nạn.</li><li>Những biểu hiện của thế giới tâm linh.</li></ul>
+<p>Gia đình gặp bi kịch trở thành trung tâm lịch sử của địa điểm. Những sự kiện siêu nhiên không chỉ gắn với một cá nhân mà ảnh hưởng đến những người có liên quan. Thế giới vì vậy có cấu trúc xã hội nhỏ, tập trung vào gia đình và cộng đồng xung quanh.</p>
+<p><b>Hạn chế:</b> Các nhân vật ngoài nhân vật chính và những thực thể kinh dị chưa tạo được cảm giác về một xã hội có đời sống độc lập. Người chơi nhìn thấy dấu vết của cộng đồng, nhưng chưa hiểu sâu cách cộng đồng sinh hoạt, tương tác và hình thành những quan niệm tâm linh như thế nào. Chiều sâu của thế giới nghiêng về bầu không khí và biểu tượng hơn là xã hội.</p>
+
+<h3 id="tt-environment">5. Environmental Storytelling — Môi trường kể chuyện bằng ký hiệu văn hóa</h3>
+<div class="duo-figure">
+<figure><img src="https://photo2.tinhte.vn/data/attachment-files/2022/09/6126287_20220915141607_1.jpg" alt="Ngõ hành lang tối trong Thần Trùng"><figcaption>Kiến trúc và đồ vật đời thường giúp người chơi nhận diện nơi chốn.</figcaption></figure>
+<figure><img src="https://images.steamusercontent.com/ugc/36685500481547665/36AA90FE75EDDA4C2C045BB105FBCC75902DC9D9/?ima=fit&imcolor=%23000000&impolicy=Letterbox&imw=1024&letterbox=false" alt="Hành lang tang lễ trong Thần Trùng"><figcaption>Biểu tượng tang lễ và ánh sáng biến đổi không khí của cùng một loại không gian.</figcaption></figure>
+</div>
+<p>Thay vì giải thích toàn bộ bối cảnh bằng lời thoại, trò chơi dùng đồ vật và không gian để tạo cảm giác về một địa điểm từng có người sinh sống. Một hành lang cũ cho thấy tuổi đời khu nhà; bàn thờ gợi liên hệ với người đã khuất; căn phòng chứa đồ vật bất thường gợi ý rằng nơi đây từng xảy ra chuyện không bình thường.</p>
+<p>Có thể phân biệt hai dạng Environmental Storytelling:</p>
+<div class="grid2"><div class="card"><span class="tag">Environmental Atmosphere</span><h4>Môi trường tạo cảm xúc</h4><p>Ánh sáng, kiến trúc, âm thanh và biểu tượng khiến người chơi cảm thấy bất an, gần gũi hoặc xa lạ.</p></div><div class="card"><span class="tag">Environmental Narrative</span><h4>Môi trường cung cấp thông tin</h4><p>Đồ vật, dấu vết và bố cục cho phép người chơi tái dựng sự kiện, lịch sử hoặc quan hệ giữa các nhân vật.</p></div></div>
+<p>Thần Trùng làm khá tốt dạng thứ nhất, nhưng dạng thứ hai chưa đồng đều. Một số đồ vật phù hợp với bối cảnh nhưng không bổ sung thông tin quan trọng; một số tình tiết không được giải thích đầy đủ khiến người chơi phải tự suy đoán. Có thể nói người chơi cảm nhận được căn nhà đáng sợ và rất Việt Nam, nhưng chưa chắc có thể tự tái dựng toàn bộ lịch sử của nó chỉ thông qua quan sát thế giới.</p>
+
+<h3 id="tt-coherence">6. Tính nhất quán của Game World</h3>
+<p>Thần Trùng có một nền tảng liên kết đáng chú ý:</p>
+<div class="flow"><div class="node">Không gian đô thị<br><span class="small">Bối cảnh</span></div><div class="arrow">→</div><div class="node">Văn hóa dân gian<br><span class="small">Hệ quy chiếu</span></div><div class="arrow">→</div><div class="node">Bi kịch gia đình<br><span class="small">Trung tâm câu chuyện</span></div><div class="arrow">→</div><div class="node">Hiện tượng siêu nhiên<br><span class="small">Trải nghiệm</span></div></div>
+<p>Vấn đề nằm ở mức độ gắn kết giữa các thành phần. Khi truyền thuyết Thần Trùng được giới thiệu như trung tâm thế giới, người chơi kỳ vọng quy luật truyền thuyết được khai thác sâu hơn: nguyên nhân, hậu quả và cách nó tác động đến các nhân vật. Bài đánh giá của Vietgame Asia cho rằng tiền đề tốt nhưng mạch truyện còn rời rạc và một số nút thắt chưa được xử lý thỏa đáng.<sup><a href="#src-vietgame">[2]</a></sup></p>
+<div class="verdict"><span class="tag good">Đánh giá tổng quan · Thần Trùng</span><p>Thế giới của Thần Trùng thành công nhất ở <b>bản sắc văn hóa, sự gần gũi của không gian và khả năng biến đời sống thường ngày thành chất liệu kinh dị.</b> Hạn chế nằm ở chiều sâu xã hội, sự liên kết của lịch sử và khả năng kể chuyện thông qua môi trường chưa phát huy hết tiềm năng.</p></div>
+</section>
+
+<section id="outlast">
+<div class="section-kicker">03 · Case study</div><h2>Outlast 1 — Mount Massive như một hệ sinh thái quyền lực bị sụp đổ</h2>
+<p class="lead">Nếu Thần Trùng sử dụng không gian đời thường bị ám ảnh bởi tín ngưỡng dân gian, Outlast xây dựng một thế giới dựa trên sự tha hóa của một thiết chế xã hội. Nguồn gốc kinh hoàng không chỉ là quái vật, mà còn là hệ thống đã biến nơi chữa lành thành nơi kiểm soát và thử nghiệm con người.</p>
+<div class="duo-figure"><figure><img src="https://www.thefandomentals.com/wp-content/uploads/2023/06/outlast7_1000x600.jpg" alt="Mount Massive Asylum nhìn từ bên ngoài"><figcaption>Mount Massive nằm biệt lập trong vùng núi Colorado, tạo cảm giác bị cô lập với thế giới bên ngoài. Ảnh: The Fandomentals.</figcaption></figure><figure><img src="https://images.steamusercontent.com/ugc/15675231895942415310/A12C8A2EEEBEB2B6CD590F394D483E7A6A338C90/?ima=fit&imcolor=%23000000&impolicy=Letterbox&imw=1024&letterbox=false" alt="Sinh vật trong khu giam giữ Outlast qua night vision"><figcaption>Góc nhìn night vision nhấn mạnh cảm giác bất an trong các khu vực của bệnh viện. Ảnh: Steam Community.</figcaption></figure></div>
+<h3 id="ol-identity">1. Bản sắc thế giới — Bệnh viện không đơn thuần là nơi có quái vật</h3>
+<p>Mount Massive Asylum nằm biệt lập trong vùng núi Colorado. Theo phần giới thiệu chính thức của Red Barrels, đây vốn là một bệnh viện tâm thần đã bị bỏ hoang, sau đó được mở cửa trở lại dưới danh nghĩa nghiên cứu và hoạt động từ thiện của tập đoàn Murkoff. Hoạt động tại cơ sở được giữ bí mật.<sup><a href="#src-redbarrels">[4]</a></sup></p>
+<p>Điểm quan trọng nhất là bản sắc của Mount Massive không chỉ đến từ hình ảnh đổ nát, máu me hay bệnh nhân biến dạng. Nó đến từ sự mâu thuẫn giữa hai chức năng: nơi đáng lẽ được xây dựng để chữa trị con người lại bị biến thành nơi thực hiện những thí nghiệm phi nhân tính.</p>
+<div class="table-wrap"><table><thead><tr><th>Chức năng được công bố</th><th>Bản chất thực tế trong câu chuyện</th></tr></thead><tbody>
+<tr><td><b>Bệnh viện tâm thần</b></td><td>Nơi thực hiện thí nghiệm trên bệnh nhân.</td></tr><tr><td><b>Điều trị và chăm sóc</b></td><td>Kiểm soát, giám sát và khai thác cơ thể con người.</td></tr><tr><td><b>Nghiên cứu khoa học</b></td><td>Theo đuổi các thử nghiệm vượt qua giới hạn đạo đức.</td></tr><tr><td><b>Tổ chức từ thiện</b></td><td>Lớp vỏ công khai cho hoạt động bí mật của Murkoff.</td></tr>
+</tbody></table></div>
+<p>Người chơi không bước vào một nơi vốn được xây dựng để làm điều ác. Họ bước vào một nơi được kỳ vọng là để chữa lành con người, nhưng đã bị biến thành công cụ gây ra đau khổ. Đây là bản sắc chủ đề cốt lõi của Mount Massive.</p>
+<div class="callout"><div class="symbol">✦</div><p><b>Mount Massive là một địa điểm; Murkoff là hệ thống quyền lực khiến thảm họa tại địa điểm ấy có thể xảy ra.</b> Nếu không có Murkoff, đây chỉ là một bệnh viện tâm thần đổ nát. Nhưng Murkoff có thể tiếp tục tồn tại và hoạt động ở những địa điểm khác, khiến thế giới Outlast lớn hơn nhiều so với bản đồ người chơi trực tiếp khám phá.</p></div>
+
+<h3 id="ol-space">2. Không gian và địa lý — Một hệ sinh thái khép kín có phân tầng</h3>
+<p>Một trong những điểm mạnh của Outlast là cách các khu vực được tổ chức thành hệ thống không gian có chức năng. Mô hình dưới đây là cách diễn giải các lớp không gian, không phải sơ đồ đường đi chính xác của màn chơi.</p>
+<svg viewBox="0 0 880 520" role="img" aria-label="Sơ đồ các lớp không gian Mount Massive" style="width:100%;height:auto;display:block;margin:18px 0;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px">
+<defs><marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#d5a66d"/></marker></defs>
+<g font-family="system-ui,sans-serif" text-anchor="middle"><rect x="245" y="20" width="390" height="58" rx="13" fill="#253746" stroke="#6e9db3"/><text x="440" y="45" fill="#edf3f7" font-size="16" font-weight="700">Vùng núi Colorado</text><text x="440" y="64" fill="#b8c7d2" font-size="11">Không gian biệt lập bên ngoài</text>
+<path d="M440 78 V106" stroke="#d5a66d" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="245" y="112" width="390" height="58" rx="13" fill="#263a3d" stroke="#78b2a5"/><text x="440" y="137" fill="#edf3f7" font-size="16" font-weight="700">Khuôn viên & khu hành chính</text><text x="440" y="156" fill="#b8c7d2" font-size="11">Lớp tiếp cận và quản lý</text>
+<path d="M440 170 V198" stroke="#d5a66d" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="245" y="204" width="390" height="58" rx="13" fill="#3b3030" stroke="#bc827c"/><text x="440" y="229" fill="#edf3f7" font-size="16" font-weight="700">Khu điều trị & lưu trú</text><text x="440" y="248" fill="#d7c1bd" font-size="11">Bệnh nhân, phòng bệnh, khu giam giữ</text>
+<path d="M440 262 V290" stroke="#d5a66d" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="245" y="296" width="390" height="58" rx="13" fill="#332d3d" stroke="#9e8aba"/><text x="440" y="321" fill="#edf3f7" font-size="16" font-weight="700">Hành lang kỹ thuật & cống ngầm</text><text x="440" y="340" fill="#c8bdd5" font-size="11">Hệ thống hậu cần và không gian khuất</text>
+<path d="M440 354 V382" stroke="#d5a66d" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="245" y="388" width="390" height="58" rx="13" fill="#47352c" stroke="#d6a36d"/><text x="440" y="413" fill="#fff4e8" font-size="16" font-weight="700">Phòng thí nghiệm ngầm</text><text x="440" y="432" fill="#ead4bd" font-size="11">Morphogenic Engine · Project Walrider</text>
+<text x="440" y="488" fill="var(--muted)" font-size="12">Sơ đồ khái niệm về các lớp không gian của Mount Massive</text></g></svg>
+<p><b>A. Khu vực phía trên — không gian của những người bị kiểm soát.</b> Các khu điều trị, khu giam giữ và phòng bệnh mang cảm giác khép kín, thiếu riêng tư, hư hỏng và xuống cấp. Đây là nơi bệnh nhân sinh sống, bị quản lý và trở thành đối tượng thí nghiệm.</p>
+<p><b>B. Khu vực phía dưới — không gian của hoạt động nghiên cứu.</b> Phòng thí nghiệm ngầm mang chức năng khác: đây là nơi các hoạt động nghiên cứu quan trọng của Murkoff được triển khai, gắn với Morphogenic Engine và Project Walrider.</p>
+<p>Sự đối lập giữa khu bệnh nhân và khu nghiên cứu có thể được đọc như một biểu hiện của phân tầng quyền lực: những người chịu tác động của hệ thống sống trong điều kiện khác hẳn không gian phục vụ hoạt động nghiên cứu. Đây là cách diễn giải kiến trúc từ trải nghiệm game, không phải sơ đồ phân cấp chính thức do nhà phát triển công bố.</p>
+<p><b>Đánh giá:</b> Outlast dùng kiến trúc không chỉ để đặt thử thách gameplay mà còn phản ánh cấu trúc quyền lực. Tuy nhiên, các khu điều trị với hành lang, phòng giam và kiến trúc lặp lại đôi lúc khiến người chơi khó phân biệt địa điểm. Tính đồng dạng vừa tạo cảm giác phi cá nhân hóa, vừa có thể làm giảm khả năng định hướng.</p>
+
+<h3 id="ol-history">3. Lịch sử và văn hóa — Khoa học, quyền lực và tôn giáo</h3>
+<p>Outlast xây dựng thế giới từ sự giao thoa của ba hệ thống tư tưởng: khoa học, quyền lực doanh nghiệp và tôn giáo. Chúng không chỉ được đặt cạnh nhau mà còn xung đột, bổ sung và tạo nguyên nhân cho thảm họa.</p>
+<div class="grid3">
+<div class="pillar"><h3 style="color:#8eb9dc">KHOA HỌC</h3><p>Thí nghiệm, tâm lý học, công nghệ và Morphogenic Engine.</p></div>
+<div class="pillar"><h3 style="color:#e4b681">QUYỀN LỰC</h3><p>Murkoff, bí mật doanh nghiệp, giám sát và khai thác con người.</p></div>
+<div class="pillar"><h3 style="color:#b6a5dc">TÔN GIÁO</h3><p>Niềm tin vào Walrider, diễn giải siêu nhiên và giáo phái.</p></div>
+</div>
+<h4>3.1. Lớp khoa học</h4>
+<p>Morphogenic Engine và Project Walrider là những thành phần quan trọng trong lịch sử Mount Massive. Murkoff sử dụng các thử nghiệm tâm lý và công nghệ để nghiên cứu khả năng tạo ra hoặc kiểm soát một thực thể đặc biệt được gọi là Walrider. Những bệnh nhân trở thành đối tượng thử nghiệm phải chịu tác động nghiêm trọng về thể chất và tinh thần.</p>
+<p>Điểm quan trọng là Outlast không giới thiệu Walrider như một con quỷ xuất hiện ngẫu nhiên. Sự tồn tại của nó được gắn với một chuỗi nghiên cứu và hành động của con người. Điều đó tạo mối liên hệ nhân quả giữa khoa học, thí nghiệm và thảm họa.<sup><a href="#src-redbarrels">[4]</a></sup></p>
+<h4>3.2. Lớp quyền lực doanh nghiệp</h4>
+<p>Murkoff không chỉ xuất hiện để giải thích nguồn gốc quái vật. Nó đại diện cho một hệ thống có khả năng thao túng nghiên cứu khoa học, cơ sở y tế, những người dễ bị tổn thương và thông tin về hậu quả. Trên trang chính thức, Red Barrels mô tả Murkoff là tập đoàn đa quốc gia hoạt động trong nhiều lĩnh vực nghiên cứu và công nghệ; bộ phận xử lý khủng hoảng của công ty được mô tả như cơ chế giảm thiểu thiệt hại kinh tế thay vì cứu giúp nạn nhân.<sup><a href="#src-redbarrels">[4]</a></sup></p>
+<p><b>Mount Massive là một địa điểm; Murkoff là hệ thống khiến thảm họa có thể tiếp diễn.</b> Nếu chỉ có bệnh viện, câu chuyện sẽ giới hạn ở một địa điểm ma ám. Có Murkoff, thế giới Outlast mở rộng thành một mạng lưới quyền lực và hoạt động bí mật nằm ngoài tầm nhìn trực tiếp của người chơi.</p>
+<h4>3.3. Lớp tôn giáo</h4>
+<p>Father Martin và những người đi theo ông diễn giải Walrider theo hướng tôn giáo, coi thực thể này như một đấng tối cao. Trong khi đó, những người có liên hệ với hoạt động nghiên cứu nhìn nhận Walrider qua lăng kính khoa học và công nghệ. Cùng một thực thể nhưng có hai cách hiểu: với khoa học, nó là kết quả của một quá trình nghiên cứu; với tôn giáo, nó mang ý nghĩa thần thánh và đáng được tôn thờ.</p>
+<p><b>Đánh giá:</b> Outlast hình thành một hệ thống tư tưởng có quan hệ nhân quả. Khoa học tạo ra hiện tượng vượt ngoài tầm kiểm soát; quyền lực doanh nghiệp biến con người thành đối tượng thí nghiệm; tôn giáo trở thành một cách diễn giải những gì con người không hiểu hoặc không thể kiểm soát. Người chơi dần tái dựng hệ thống này qua tài liệu và sự kiện trong Mount Massive.</p>
+
+<h3 id="ol-society">4. Xã hội và nhân vật — Một hệ sinh thái quyền lực bị sụp đổ</h3>
+<p>Dù câu chuyện diễn ra trong một cơ sở biệt lập, Mount Massive không phải nơi chỉ có nhân vật chính và quái vật. Nó từng có hệ thống tổ chức và quan hệ quyền lực rất rõ ràng.</p>
+<div class="stack" aria-label="Mô hình quan hệ quyền lực Mount Massive">
+<div class="level top"><b>Murkoff Corporation</b><span>Chủ thể nắm quyền kiểm soát và lợi ích nghiên cứu</span></div><div class="stack-arrow">↓</div>
+<div class="grid2"><div class="level"><b>Nhà nghiên cứu & y tế</b><span>Triển khai và giám sát thí nghiệm</span></div><div class="level"><b>An ninh & quản lý</b><span>Duy trì trật tự và kiểm soát cơ sở</span></div></div><div class="stack-arrow">↓</div>
+<div class="level bottom"><b>Bệnh nhân / Đối tượng thí nghiệm</b><span>Những con người bị đặt vào vị trí chịu kiểm soát và khai thác</span></div></div>
+<p class="small">Mô hình diễn giải quan hệ quyền lực, không phải sơ đồ tổ chức chính thức của Murkoff.</p>
+<p>Khi thảm họa xảy ra, cấu trúc ấy bị phá vỡ. Những người từng kiểm soát cơ sở trở thành nạn nhân, trong khi một số bệnh nhân và đối tượng thí nghiệm trở thành mối đe dọa đối với những người còn lại.</p>
+<div class="grid2">
+<div class="card"><h4>Father Martin — Niềm tin tôn giáo</h4><p>Đại diện cho cách con người diễn giải hiện tượng vượt quá khả năng nhận thức bằng niềm tin. Ông không chỉ xem Walrider như mối nguy, mà còn coi nó như một thực thể thần thánh.</p></div>
+<div class="card"><h4>Chris Walker — Nỗi ám ảnh kiểm soát</h4><p>Hành động của Walker gắn với nỗi sợ Walrider và ý muốn ngăn chặn thực thể này. Sự trớ trêu là người Miles phải trốn chạy cũng đang hành động theo một logic riêng.</p></div>
+<div class="card"><h4>Dr. Rudolf Wernicke — Di sản khoa học</h4><p>Đại diện cho quá trình nghiên cứu và tham vọng kiểm soát những hiện tượng vượt quá giới hạn hiểu biết, gắn với di sản của dự án tại Mount Massive.</p></div>
+<div class="card"><h4>Miles Upshur — Người ngoài cuộc</h4><p>Một nhà báo độc lập đi vào Mount Massive để tìm hiểu sự thật. Miles không thuộc hệ thống này; sự hiện diện của anh giúp người chơi khám phá những bí mật bị che giấu.</p></div>
+</div>
+<p>Nhân vật không chỉ là đối thủ hoặc NPC phục vụ gameplay. Họ thể hiện nhiều cách phản ứng trước thảm họa, nhiều động cơ và hệ giá trị xung đột nhau.</p>
+<p><b>Một lưu ý khi phân tích:</b> Vì phần lớn bệnh nhân xuất hiện dưới hình dạng những kẻ săn đuổi hoặc thực thể bạo lực, trò chơi có nguy cơ khiến người chơi đồng nhất bệnh tâm thần với sự nguy hiểm. Cách đọc có chiều sâu hơn là nhìn họ trong bối cảnh là nạn nhân của một hệ thống thí nghiệm và lạm dụng. Trọng tâm khi đó chuyển từ hình ảnh “quái vật” sang trách nhiệm của tổ chức đã tạo ra thảm họa. Một nghiên cứu học thuật năm 2025 cũng tiếp cận Outlast và Whistleblower qua chủ đề vi phạm nhân quyền mang tính hệ thống và trách nhiệm đạo đức.<sup><a href="#src-thesis">[6]</a></sup></p>
+
+<h3 id="ol-environment">5. Environmental Storytelling — Kiến trúc, tài liệu và dấu vết kể lại lịch sử</h3>
+<div class="duo-figure"><figure><img src="https://images.steamusercontent.com/ugc/1101417743044187814/2811278C900AC84F6B9BAFB1B419373F4085B3D8/" alt="Hành lang bệnh viện có vết máu trong Outlast"><figcaption>Hành lang, phòng bệnh và dấu vết bạo lực giúp người chơi hình dung những gì đã xảy ra trước khi Miles đến. Ảnh: Steam Community.</figcaption></figure><figure><img src="https://techraptor.net/sites/default/files/images/Outlast_Asylum.jpg" alt="Lối đi tối trong khu vực bệnh viện Outlast qua máy quay night vision"><figcaption>Góc nhìn night vision biến công cụ quan sát thành một phần của thẩm mỹ thế giới. Ảnh: TechRaptor.</figcaption></figure></div>
+<p>Outlast không chỉ kể chuyện bằng lời thoại và cutscene. Người chơi hiểu những gì đã xảy ra thông qua:</p>
+<ul><li><b>Kiến trúc và bố trí không gian:</b> khu bệnh viện đổ nát, phòng giam, hành lang đầy máu và phòng thí nghiệm tạo ra tương phản giữa bệnh nhân và hoạt động nghiên cứu.</li><li><b>Tài liệu và hồ sơ:</b> cung cấp thông tin về lịch sử Mount Massive, các thí nghiệm, đối tượng tham gia và hoạt động của Murkoff.</li><li><b>Dấu vết sự kiện:</b> thi thể, vết máu, vật cản, đồ đạc bị phá hủy và dấu hiệu chống cự giúp người chơi hình dung thảm họa xảy ra trước khi Miles đặt chân đến.</li><li><b>Hệ thống giám sát:</b> máy quay an ninh và dấu hiệu kiểm soát khiến người chơi cảm nhận đây từng là nơi được quản lý chặt chẽ.</li></ul>
+<p>GameSpot đánh giá cao bầu không khí của Mount Massive và cách câu chuyện được kể qua tài liệu, ghi chú. Bài đánh giá cũng nêu hạn chế về tính tuyến tính của lộ trình khám phá.<sup><a href="#src-gamespot">[5]</a></sup></p>
+<p>Một chi tiết giàu ý nghĩa là Miles dùng máy quay để ghi nhận sự thật, trong khi cơ sở từng dùng hệ thống giám sát để kiểm soát những người bên trong. Cùng là công nghệ ghi hình, nhưng một bên hướng đến phơi bày, một bên hướng đến quản lý và kiểm soát.</p>
+<div class="verdict"><span class="tag good">Một trong những điểm mạnh nhất của Outlast</span><p>Môi trường vật lý, tài liệu và dấu vết sự kiện phối hợp để kể lại lịch sử. Mount Massive không còn là tòa nhà chứa quái vật, mà là địa điểm cuối cùng trong một chuỗi sự kiện kéo dài từ nghiên cứu bí mật đến thảm họa hiện tại.</p></div>
+
+<h3 id="ol-coherence">6. Tính nhất quán của Game World — Một thế giới có nguyên nhân và hệ quả</h3>
+<p>Các yếu tố trong Outlast kết nối thành một chuỗi nhân quả tương đối rõ ràng. Sơ đồ dưới đây là mô hình diễn giải cốt truyện và lịch sử thế giới ở mức khái quát:</p>
+<div class="flow"><div class="node">Tham vọng nghiên cứu của Murkoff</div><div class="arrow">→</div><div class="node">Tái sử dụng Mount Massive</div><div class="arrow">→</div><div class="node">Thí nghiệm trên bệnh nhân</div><div class="arrow">→</div><div class="node">Project Walrider</div><div class="arrow">→</div><div class="node">Thảm họa & sụp đổ trật tự</div></div>
+<p>Chuỗi này cho thấy các yếu tố không tồn tại riêng lẻ: Murkoff giải thích vì sao bệnh viện được tái mở; thí nghiệm góp phần giải thích tình trạng của bệnh nhân; Walrider gắn với những sự kiện dẫn đến thảm họa; các tài liệu giải thích những điều nhân vật chưa trực tiếp chứng kiến.</p>
+<p>Không phải mọi yếu tố đều được giải thích tường tận. Một số khía cạnh siêu nhiên và công nghệ vẫn được giữ lại để tạo bí ẩn. Điều đó không nhất thiết là khuyết điểm: một Game World tốt không phải giải thích mọi thứ, nhưng cần có nền tảng đủ nhất quán để người chơi tin rằng những điều chưa biết vẫn thuộc về cùng một thế giới.</p>
+<p><b>Hạn chế:</b> Không gian Outlast khá tuyến tính. Người chơi chủ yếu khám phá các khu vực được định sẵn, chứ không tự do tìm hiểu đời sống của cộng đồng bên ngoài Mount Massive. Các khu vực bệnh viện cũng có thể lặp lại về kiến trúc, khiến thế giới thiếu đa dạng về không gian. Dù vậy, những hạn chế ấy không làm mất đi sự liên kết giữa lịch sử, quyền lực và sự sụp đổ của cơ sở.</p>
+<div class="verdict"><span class="tag good">Đánh giá tổng quan · Outlast 1</span><p>Outlast xây dựng Game World có <b>sự liên kết chặt chẽ giữa lịch sử, xã hội, công nghệ, quyền lực và không gian.</b> Thế giới có bản sắc riêng, sự kiện có quan hệ nhân quả. Hạn chế chủ yếu nằm ở phạm vi trải nghiệm tuyến tính, sự lặp lại môi trường và cách thể hiện bệnh nhân dưới góc nhìn kinh dị.</p></div>
+</section>
+
+<section id="comparison">
+<div class="section-kicker">04 · Đối chiếu</div><h2>So sánh Game World của hai trò chơi</h2>
+<p class="lead">Hai trò chơi theo đuổi hai triết lý xây dựng thế giới khác nhau: một bên dựa vào ký ức văn hóa và sự thân thuộc; bên kia dựa vào lịch sử thiết chế, quyền lực và quan hệ nhân quả.</p>
+<div class="compare-grid">
+<div class="compare-panel"><img src="https://photo2.tinhte.vn/data/attachment-files/2022/09/6126287_20220915141607_1.jpg" alt="Không gian đô thị trong Thần Trùng"><div class="inner"><span class="tag warn">Thế giới văn hóa</span><h3>Thần Trùng</h3><p>Thế giới được dựng từ những điều người chơi Việt đã biết. Nhà phát triển sử dụng hình ảnh quen thuộc và đặt chúng vào hoàn cảnh bất thường. Người chơi nhận diện thế giới trước khi hiểu hết câu chuyện.</p></div></div>
+<div class="compare-panel"><img src="https://www.thefandomentals.com/wp-content/uploads/2023/06/outlast7_1000x600.jpg" alt="Mount Massive Asylum trong Outlast"><div class="inner"><span class="tag good">Thế giới hệ thống</span><h3>Outlast 1</h3><p>Thế giới được mở ra như một bí ẩn. Người chơi đi vào Mount Massive mà chưa biết lịch sử của nó; càng khám phá, họ càng phát hiện Murkoff, thí nghiệm, nhân vật và bản chất thảm họa.</p></div></div>
+</div>
+<div class="table-wrap"><table><thead><tr><th>Tiêu chí</th><th>Thần Trùng</th><th>Outlast 1</th></tr></thead><tbody>
+<tr><td><b>Quy mô thế giới</b></td><td>Không gian đô thị thu hẹp, tập trung vào khu nhà trọ.</td><td>Một cơ sở biệt lập nhưng có nhiều phân khu chức năng.</td></tr>
+<tr><td><b>Bản sắc</b></td><td>Văn hóa và đời sống Việt Nam.</td><td>Kinh dị tâm lý, khoa học và quyền lực doanh nghiệp.</td></tr>
+<tr><td><b>Địa lý</b></td><td>Ngõ nhỏ, khu nhà trọ, căn nhà.</td><td>Bệnh viện, khu giam giữ, hành lang kỹ thuật, hầm ngầm.</td></tr>
+<tr><td><b>Lịch sử</b></td><td>Bi kịch gia đình và tín ngưỡng dân gian.</td><td>Lịch sử nghiên cứu và hoạt động bí mật.</td></tr>
+<tr><td><b>Văn hóa</b></td><td>Trùng tang, tang lễ, thờ cúng.</td><td>Y học, khoa học, tổ chức và tôn giáo.</td></tr>
+<tr><td><b>Xã hội</b></td><td>Gia đình và cộng đồng địa phương.</td><td>Doanh nghiệp, nhân viên, bệnh nhân và hệ thống kiểm soát.</td></tr>
+<tr><td><b>Môi trường kể chuyện</b></td><td>Biểu tượng và đồ vật quen thuộc.</td><td>Kiến trúc, hồ sơ và dấu vết sự kiện.</td></tr>
+<tr><td><b>Tính nhất quán</b></td><td>Bản sắc tốt, liên kết cốt truyện chưa đồng đều.</td><td>Liên kết hệ thống và nhân quả tốt hơn.</td></tr>
+<tr><td><b>Trọng tâm khám phá</b></td><td>Bí ẩn của một địa điểm và bi kịch gia đình.</td><td>Lịch sử của một thiết chế và thảm họa mang tính hệ thống.</td></tr>
+</tbody></table></div>
+<h3>Environmental Storytelling — Hai cách kể chuyện bằng môi trường</h3>
+<div class="grid2"><div class="card"><h3>Thần Trùng · Ký hiệu văn hóa</h3><p>Một bàn thờ, quan tài, con ngõ cũ hay giai điệu đám tang gợi ra ý nghĩa văn hóa mà người chơi có thể tự nhận biết. Môi trường giúp cảm nhận bầu không khí và tính bản địa của thế giới.</p><span class="tag warn">Tạo cảm xúc & liên tưởng</span></div><div class="card"><h3>Outlast · Dấu vết của hệ thống</h3><p>Một phòng bệnh bị phá hủy, hồ sơ nghiên cứu, thiết bị giám sát hay sự khác biệt giữa khu bệnh nhân và phòng thí nghiệm cung cấp thông tin về lịch sử và cấu trúc quyền lực.</p><span class="tag good">Tái dựng sự kiện & nguyên nhân</span></div></div>
+<p>Outlast có khả năng sử dụng môi trường như một phương tiện kể chuyện hoàn chỉnh hơn. Thần Trùng có lợi thế về tính nhận diện văn hóa: người chơi Việt có thể hiểu ý nghĩa của các vật dụng qua trải nghiệm sống, trong khi người chơi nước ngoài có thể cần tìm hiểu thêm. Đây là giá trị của việc xây dựng thế giới dựa trên văn hóa bản địa.</p>
+</section>
+
+<section id="lessons">
+<div class="section-kicker">05 · Tổng kết thiết kế</div><h2>Năm bài học xây dựng Game World</h2>
+<div class="card"><h3>1. Một thế giới nhỏ vẫn có thể có chiều sâu lớn</h3><p>Không cần tạo ra một thành phố khổng lồ để có Game World đáng nhớ. Thần Trùng dùng khu nhà trọ và không gian liên quan; Outlast dùng một bệnh viện biệt lập. Điều quan trọng là chiều sâu của thế giới, không phải diện tích bản đồ.</p></div>
+<div class="card"><h3>2. Văn hóa cần được tích hợp, không chỉ được trang trí</h3><p>Thần Trùng cho thấy yếu tố văn hóa Việt Nam có thể tạo khác biệt rất lớn. Nhưng mỗi biểu tượng quan trọng nên liên hệ với lịch sử, quan hệ nhân vật hoặc quy luật tồn tại. Một chiếc bàn thờ có thể gắn với nghi thức, lời nguyền, ký ức hay bí mật gia đình, thay vì chỉ làm nền tạo không khí.</p></div>
+<div class="card"><h3>3. Không gian có thể phản ánh cấu trúc xã hội</h3><p>Outlast cho thấy kiến trúc có thể nói lên cách tổ chức đối xử với con người. Sự khác biệt giữa khu bệnh nhân và phòng thí nghiệm truyền tải thông điệp về quyền lực mà không cần một đoạn thoại giải thích trực tiếp.</p></div>
+<div class="card"><h3>4. Lịch sử thế giới nên có quan hệ nhân quả</h3><p>Một thế giới có nhiều sự kiện trong quá khứ chưa chắc đã có World-building tốt. Các sự kiện cần ảnh hưởng đến hiện tại. Outlast kết nối nghiên cứu của Murkoff, các thí nghiệm, Walrider và thảm họa tại Mount Massive thành một chuỗi nguyên nhân – hệ quả.</p></div>
+<div class="card"><h3>5. Người chơi nên cảm nhận thế giới tồn tại độc lập với họ</h3><p>Trong Outlast, sự kiện kinh hoàng đã xảy ra trước khi Miles đến. Murkoff đã vận hành hoạt động của mình từ trước đó. Các nhân vật có mục tiêu và niềm tin riêng. Miles không phải trung tâm của toàn bộ thế giới; anh chỉ là người bước vào một hệ thống đã tồn tại và đang sụp đổ.</p></div>
+</section>
+
+<section id="conclusion">
+<div class="section-kicker">06 · Kết luận</div><h2>Đánh giá cuối cùng</h2>
+<div class="grid2">
+<div class="card"><span class="tag warn">Thần Trùng</span><h3>Thế mạnh</h3><ul><li>Bản sắc văn hóa địa phương.</li><li>Không gian đô thị quen thuộc.</li><li>Tín ngưỡng dân gian tạo hệ quy chiếu tâm linh.</li><li>Biến đời sống bình thường thành chất liệu kinh dị.</li></ul><h4>Hạn chế</h4><ul><li>Phạm vi xã hội nhỏ.</li><li>Lịch sử thế giới chưa được khai thác sâu.</li><li>Một số chi tiết môi trường và tình tiết chưa kết nối chặt chẽ.</li></ul></div>
+<div class="card"><span class="tag good">Outlast 1</span><h3>Thế mạnh</h3><ul><li>Cấu trúc thế giới có hệ thống.</li><li>Lịch sử có tính nhân quả.</li><li>Phân tầng quyền lực qua không gian.</li><li>Environmental Storytelling kết hợp kiến trúc, hồ sơ và dấu vết.</li></ul><h4>Hạn chế</h4><ul><li>Không gian tuyến tính.</li><li>Một số khu vực lặp lại về kiến trúc.</li><li>Phạm vi xã hội được thể hiện chủ yếu qua một thiết chế biệt lập.</li></ul></div>
+</div>
+<div class="verdict"><p><b>Nhận định của bài phân tích:</b> Nếu xét về khả năng xây dựng một thế giới có bản sắc văn hóa riêng, Thần Trùng có hướng tiếp cận đáng giá. Trò chơi chứng minh chất liệu địa phương có thể trở thành lợi thế lớn trong game kinh dị, đặc biệt khi người chơi có sẵn liên kết cảm xúc với những hình ảnh được tái hiện.</p><p>Tuy nhiên, nếu xét về chiều sâu World-building, khả năng liên kết các yếu tố và tính nhất quán của toàn bộ thế giới, <strong>Outlast 1 thể hiện vượt trội hơn</strong>. Nó không chỉ xây dựng một địa điểm kinh dị mà còn xây dựng một hệ thống có lịch sử, quyền lực, xã hội, tư tưởng và nguyên nhân dẫn đến sự sụp đổ.</p></div>
+<div class="quote"><b>Thần Trùng</b> khiến người chơi sợ hãi vì họ nhận ra những điều quen thuộc trong thế giới của mình có thể trở nên đáng sợ đến mức nào.</div>
+<div class="quote"><b>Outlast</b> khiến người chơi sợ hãi vì họ nhận ra những thiết chế vốn được tạo ra để bảo vệ con người cũng có thể trở thành nguồn gốc của những điều kinh hoàng nhất.</div>
+<p>Đó là hai hướng xây dựng Game World rất khác nhau, nhưng đều cho thấy một điều: thế giới game không chỉ là nơi câu chuyện diễn ra. Bản thân thế giới cũng có thể chính là một phần quan trọng nhất của câu chuyện.</p>
+<div class="callout"><div class="symbol">✦</div><p><b>Gợi ý khi viết bài phân tích Game Design:</b> Hãy tách riêng hai câu hỏi: “Thế giới này có đáng tin và có bản sắc không?” và “Thế giới này có kể được câu chuyện của chính nó không?”. Thần Trùng mạnh ở bản sắc địa phương; Outlast thể hiện tốt hơn ở khả năng liên kết lịch sử, không gian và dấu vết thành một câu chuyện thống nhất.</p></div>
+</section>
+
+<section id="sources">
+<div class="section-kicker">07 · Tư liệu</div><h2>Nguồn tham khảo</h2>
+<p class="small">Các nguồn dưới đây hỗ trợ thông tin về bối cảnh và thế giới game. Những nhận xét về tính nhất quán, cấu trúc không gian và hiệu quả kể chuyện là phần đánh giá/diễn giải Game Design, không phải kết luận định lượng.</p>
+<div class="sources">
+<div class="source" id="src-steam-death"><div><strong><a href="https://store.steampowered.com/app/1726400/The_Death__Thn_Trng/" target="_blank" rel="noopener">Steam — The Death | Thần Trùng</a></strong><p>Trang game chính thức, thể loại, nhà phát triển và hình ảnh giới thiệu.</p></div></div>
+<div class="source" id="src-vietgame"><div><strong><a href="https://www.vietgame.asia/than-trung-danh-gia-game/" target="_blank" rel="noopener">Vietgame Asia — Thần Trùng: Đánh Giá Game</a></strong><p>Nhận xét về bối cảnh Hà Nội, chi tiết văn hóa bản địa, truyền thuyết Thần Trùng và những hạn chế của mạch truyện.</p></div></div>
+<div class="source" id="src-tinhte"><div><strong><a href="https://tinhte.vn/thread/than-trung-game-kinh-di-nguoi-viet-lam-ra-co-gi-hay.3565654/" target="_blank" rel="noopener">Tinhte — Thần Trùng: Game kinh dị người Việt làm ra có gì hay?</a></strong><p>Tư liệu hình ảnh không gian khu nhà trọ và hành lang trong game.</p></div></div>
+<div class="source" id="src-redbarrels"><div><strong><a href="https://redbarrelsgames.com/games/outlast/" target="_blank" rel="noopener">Red Barrels — Outlast (trang chính thức)</a></strong><p>Thông tin chính thức về Mount Massive Asylum, Miles Upshur, Murkoff Corporation, Outlast: Whistleblower và The Murkoff Account.</p></div></div>
+<div class="source" id="src-gamespot"><div><strong><a href="https://www.gamespot.com/reviews/outlast-review/1900-6413987/" target="_blank" rel="noopener">GameSpot — Outlast Review (2014)</a></strong><p>Đánh giá môi trường, thiết kế âm thanh, tài liệu, sự lặp lại của kẻ địch và cấu trúc trải nghiệm.</p></div></div>
+<div class="source" id="src-thesis"><div><strong><a href="https://repository.gchumanrights.org/items/394f4a5d-7334-4fdf-a468-3da8c102615f" target="_blank" rel="noopener">Elizabeth Jiji Vetticad (2025) — Video games as pedagogical tools for human rights education: a critical examination of Outlast and Whistleblower</a></strong><p>Luận văn thuộc Global Campus of Human Rights, mô tả cách Outlast và Whistleblower thể hiện vi phạm nhân quyền mang tính hệ thống, sự dễ tổn thương và trách nhiệm đạo đức.</p></div></div>
+<div class="source"><div><strong><a href="https://steamcommunity.com/app/238320/screenshots/" target="_blank" rel="noopener">Steam Community — Outlast Screenshots</a></strong><p>Nguồn hình ảnh gameplay Outlast được sử dụng trong bài.</p></div></div>
+</div>
+</section>
+<footer><b>Game Design · Comparative World-building Analysis</b><br>Thần Trùng × Outlast 1 · Tài liệu HTML độc lập<br><a class="backtop" href="#top">↑ Trở về đầu trang</a><p class="small">Gợi ý chia sẻ: gửi file HTML này cho người đọc. Trang hoạt động độc lập; ảnh minh họa lấy từ nguồn bên ngoài nên cần Internet. Có thể dùng nút “In / Lưu PDF” để xuất bản PDF từ trình duyệt.</p></footer>
+</main></div>
+<script>
+(function(){
+ const root=document.documentElement,btn=document.getElementById('themeBtn');
+ const saved=localStorage.getItem('world-theme'); if(saved==='light')root.setAttribute('data-theme','light');
+ btn.addEventListener('click',()=>{const light=root.getAttribute('data-theme')!=='light';if(light){root.setAttribute('data-theme','light');localStorage.setItem('world-theme','light')}else{root.removeAttribute('data-theme');localStorage.setItem('world-theme','dark')}});
+ const bar=document.getElementById('progressBar');function update(){const d=document.documentElement;const max=d.scrollHeight-window.innerHeight;bar.style.width=(max>0?(window.scrollY/max*100):0)+'%'}window.addEventListener('scroll',update,{passive:true});update();
+ const links=[...document.querySelectorAll('#toc a')],sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-20% 0px -70% 0px'});sections.forEach(s=>io.observe(s));
+})();
+</script>
+</body></html>
