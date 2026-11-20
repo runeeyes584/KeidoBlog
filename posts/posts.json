@@ -110,5 +110,16 @@
     "excerpt": "Phân tích Game World của Thần Trùng và Outlast 1 qua bản sắc, không gian, lịch sử, văn hóa, xã hội, environmental storytelling và tính nhất quán.",
     "file": "posts/special-post/phan-tich-game-world-than-trung-outlast.html",
     "type": "html"
+  },
+  {
+    "slug": "phan-tich-gameplay-gameflow-va-co-che-than-trung-outlast-1",
+    "title": "Thần Trùng × Outlast 1: Gameplay, Gameflow & Mechanics",
+    "date": "2026-11-20",
+    "author": "Kaleidoscope",
+    "category": "Game Design",
+    "readingTime": "25 phút đọc",
+    "excerpt": "Phân tích gameplay loop, hoạt động người chơi, gameplay phụ, tỷ trọng hoạt động, gameflow và các cơ chế cốt lõi của Thần Trùng và Outlast 1.",
+    "file": "posts/special-post/phan-tich-gameplay-gameflow-co-che-than-trung-outlast.html",
+    "type": "html"
   }
 ]
